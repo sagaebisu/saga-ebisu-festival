@@ -35,7 +35,18 @@
     .eventGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(30,20,5,.06);overflow:hidden}.cardPhoto{height:150px;background:linear-gradient(135deg,#333,#111);position:relative}.card:first-child .cardPhoto{background-image:url("assets/hero-mochi.jpg");background-size:cover;background-position:center}.cardBody{padding:18px}.card h3{margin:0 0 8px;font-size:1rem}.card p{margin:0;font-size:.82rem;color:#665}
     .schedule{background:linear-gradient(135deg,#8f1010,#c61d18);color:#fff;position:relative;overflow:hidden}.schedule:before{content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(235,190,70,.45);border-radius:50%;left:-280px;bottom:-330px}.scheduleGrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;position:relative}.dayBox{background:#fff;color:var(--ink);padding:24px}.dayBox h3{margin:0 0 12px;color:var(--red);font-size:1.6rem}.row{display:grid;grid-template-columns:70px 1fr;padding:10px 0;border-bottom:1px solid #eee;font-size:.93rem}
     .accessGrid{display:grid;grid-template-columns:.8fr 1.5fr;gap:38px;align-items:start}.infoList{display:grid;gap:20px}.infoList b{display:block;color:var(--red)}.mapBox{background:#eee;border:1px solid var(--line);min-height:390px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:linear-gradient(135deg,#e9eee5,#d8e2e8)}.mapPin{font-size:3rem}.small{font-size:.88rem;color:#665}
-    .messageNews{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:32px;border-top:1px solid var(--line);padding-top:70px}.message{white-space:pre-line}.news li{list-style:none;border-bottom:1px solid var(--line);padding:12px 0}.news ul{padding:0;margin:0}.soon{border:2px solid var(--gold);padding:26px;text-align:center;color:#7b5c15;font-weight:800}
+    .messageNews{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:32px;border-top:1px solid var(--line);padding-top:70px}
+.messagePair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.messageCard{background:#fff;border:1px solid var(--line);padding:28px}
+.messageCard h3{margin:4px 0 18px}
+.message{white-space:pre-line}
+.news li{list-style:none;border-bottom:1px solid var(--line);padding:12px 0}
+.news ul{padding:0;margin:0}
+.soon{border:2px solid var(--gold);padding:26px;text-align:center;color:#7b5c15;font-weight:800}
+
+@media(max-width:820px){
+  .messagePair{grid-template-columns:1fr}
+}
     .footer{background:#7f0e0e;color:#fff;padding:34px 0}.footerRow{display:flex;justify-content:space-between;gap:20px;align-items:center}.footerLinks{display:flex;flex-wrap:wrap;gap:14px;font-size:.82rem}
     .note{background:#fff8e9;border-left:4px solid var(--gold);padding:14px 18px;margin-top:18px;font-size:.88rem}
     @media(max-width:820px){
@@ -142,10 +153,19 @@
  </div></div>
 </section>
 
-<section class="section" style="background:#fff">
- <div class="wrap messageNews">
-  <section id="message"><div class="eyebrow">MESSAGE</div><h2 style="font-size:1.8rem">会長挨拶</h2><div class="small">佐賀恵比須会 会長</div><h3>福岡 桂</h3>
-  <div class="message">御挨拶
+<section id="message">
+
+  <div class="eyebrow">MESSAGE</div>
+  <h2 style="font-size:1.8rem">御挨拶</h2>
+
+  <div class="messagePair">
+
+    <!-- 会長挨拶 -->
+    <div class="messageCard">
+      <div class="small">佐賀恵比須会 会長</div>
+      <h3>福岡 桂</h3>
+
+      <div class="message">御挨拶
 
 佐賀の皆様方におかれましては、日頃より佐賀恵比須会に格別のご支援ご協力を賜り、厚く御礼申し上げます。会を代表し、謹んで御挨拶申し上げます。
 
@@ -153,10 +173,27 @@
 
 顧みますと令和八年は、七月に最大震度七を記録した熊本地震、八月には千葉をはじめ各地を襲った記録的豪雨など、自然災害の脅威を改めて痛感させられる一年となりました。被災された皆様には心よりお見舞い申し上げますとともに、一日も早い復旧・復興をお祈り申し上げます。世界各地に目を転じましても紛争の終息は見えず、国内では物価高騰や人手不足など先行きの見えにくい情勢が続いておりますが、そうした中にあっても半世紀以上の歴史を刻んで参りました恵比須大祭を本年もつつがなく開催できますことを心より願い、平穏な日々のありがたさを改めて噛みしめております。
 
-今般、令和九年（二〇二七年）一月十日の恵比須大祭を担う第五十五代の宮地大治大恵比須をはじめ、嘉村大輔福恵比須、大曲雷太福恵比須、一ノ瀬裕子福恵比須、小恵比須の祭典委員の顔ぶれが決まりました。すべての恵比須さんが心を一つにして大祭を盛り上げ、恵比須神社のさらなる発展はもとより、佐賀のまち全体に賑わいをもたらしてくれるものと確信しております。恵比須様のご利益とえびす顔で、佐賀の街を元気づけていけたらと願っております。つきましては、祭典委員が御挨拶並びにご協賛のお願いに参上いたしますので、何卒格別のご高配を賜りますようお願い申し上げます。</div></section>
-  <section id="news"><div class="eyebrow">NEWS</div><h2 style="font-size:1.8rem">お知らせ</h2><ul><li>2026.09.03　ホームページ第1号を公開準備中</li><li>近日掲載予定　ステージ参加者</li><li>近日掲載予定　タイムテーブル</li><li>近日掲載予定　駐車場・アクセス情報</li></ul></section>
-  <section><div class="eyebrow">SPONSOR</div><h2 style="font-size:1.8rem">協賛企業</h2><div class="soon">ご協賛いただいた企業・団体の皆様を順次ご紹介します。<br><br>近日公開予定</div></section>
- </div>
+今般、令和九年（二〇二七年）一月十日の恵比須大祭を担う第五十五代の宮地大治大恵比須をはじめ、嘉村大輔福恵比須、大曲雷太福恵比須、一ノ瀬裕子福恵比須、小恵比須の祭典委員の顔ぶれが決まりました。すべての恵比須さんが心を一つにして大祭を盛り上げ、恵比須神社のさらなる発展はもとより、佐賀のまち全体に賑わいをもたらしてくれるものと確信しております。恵比須様のご利益とえびす顔で、佐賀の街を元気づけていけたらと願っております。つきましては、祭典委員が御挨拶並びにご協賛のお願いに参上いたしますので、何卒格別のご高配を賜りますようお願い申し上げます。</div>
+    </div>
+
+
+    <!-- 第五十五代 大恵比須 -->
+    <div class="messageCard">
+      <div class="small">第五十五代 大恵比須</div>
+      <h3>宮地 大治</h3>
+
+      <div class="message">御挨拶
+
+佐賀恵比須会第五十五代大恵比須を拝命いたしました、SDCソリューションズ株式会社の宮地大治と申します。さてこの度は、大役を仰せつかり身の引き締まる思いがいたしますとともにたいへん光栄に存じております。
+
+佐賀十日恵比須大祭は、明治三十七年に地元有志が兵庫県の西宮神社に参拝し、恵比須大黒の御神像を拝受して持ち帰り、與賀神社の境内にお祀りしたことに始まります。昭和四十七年には佐賀恵比須会が発足し、地域一体となって新年の恒例行事として発展してまいりました。
+
+こうした歴史と信仰に支えられた佐賀十日恵比須大祭は、単なる伝統行事にとどまりません。準備段階からお祭りの当日まで、代々の祭典委員を中心にさまざまな人とのご縁をいただいて恵比須様の「福」にあやかり、佐賀の地域社会に精神的豊かさと活力をもたらし続けているところが、このお祭り最大の意義があると思います。
+
+どうぞ一月九日の宵えびすと十日の本えびすには、ご家族やご友人をお誘いあわせのうえ、ご参拝くださいますようお願い申し上げます。みなさまの商売繁盛、家内安全と無病息災を心より祈念申し上げ、祭典委員一同、福と笑顔をお届けできるよう、心を込めてお迎えいたします。</div>
+    </div>
+
+  </div>
 </section>
 </main>
 <footer class="footer"><div class="wrap footerRow"><div class="brand"><small>佐賀恵比須神社</small>佐賀十日恵比須大祭</div><div class="footerLinks"><a href="#top">トップ</a><a href="#about">大祭について</a><a href="#event">イベント</a><a href="#schedule">タイムテーブル</a><a href="#access">アクセス</a></div></div><div class="wrap small" style="color:#eee;margin-top:18px">© 2027 Saga Ebisu Shrine Festival. All Rights Reserved.</div></footer>
