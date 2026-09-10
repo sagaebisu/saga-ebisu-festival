@@ -79,7 +79,41 @@ header{
 .nav a:hover:after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red);
 }
-.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:999px;padding:7px 12px}
+.menu-toggle{
+  display:none;
+  width:44px;height:44px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:10px;
+  padding:9px;
+  cursor:pointer;
+  position:relative;
+  z-index:70;
+}
+.menu-toggle span{
+  display:block;width:24px;height:2px;margin:5px auto;
+  background:var(--red-dark);border-radius:2px;transition:.25s ease;
+}
+.menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.is-open span:nth-child(2){opacity:0}
+.menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none}
+.mobile-menu.is-open{display:block}
+.mobile-menu-inner{
+  padding:18px 22px 28px;
+  background:rgba(157,23,28,.98);
+  border-top:1px solid rgba(255,255,255,.18);
+  box-shadow:0 16px 30px rgba(0,0,0,.18);
+}
+.mobile-menu a{
+  display:block;color:#fff;font-weight:800;text-align:center;
+  padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.18);
+}
+.mobile-menu a:last-child{border-bottom:0}
+.mobile-menu .facebook-link{
+  margin-top:10px;background:#fff;color:var(--red-dark);
+  border-radius:8px;border-bottom:0;
+}
 
 .hero{
   position:relative;
@@ -322,7 +356,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
 @media(max-width:900px){
   .nav{display:none}
-  .menu-btn{display:block}
+  .menu-toggle{display:block}
   .hero-grid{grid-template-columns:1fr;gap:0;padding-top:40px}
   .hero-art{min-height:390px}
   .hero-art:before{width:330px;height:330px}
@@ -382,8 +416,23 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
     </nav>
-    <span class="menu-btn">MENU</span>
+    <button class="menu-toggle" id="menuToggle" type="button"
+      aria-controls="mobileMenu" aria-expanded="false" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <a href="#about">大祭について</a>
+      <a href="#events">イベント</a>
+      <a href="#message">御挨拶</a>
+      <a href="#access">アクセス</a>
+      <a href="#news">お知らせ</a>
+      <a class="facebook-link" href="https://www.facebook.com/sagaebisukai"
+         target="_blank" rel="noopener noreferrer">f 公式Facebookページ</a>
+    </div>
+  </nav>
 </header>
 
 <main id="top">
@@ -657,8 +706,46 @@ footer small{display:block;margin-top:8px;opacity:.85}
   <div class="wrap">
     <strong>佐賀恵比須会｜佐賀十日恵比須大祭</strong>
     <small>令和9年1月9日(土)・10日(日)｜佐賀恵比須神社（與賀神社境内）</small>
+    <a href="https://www.facebook.com/sagaebisukai"
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;margin-top:12px;color:#fff;font-weight:800">
+      f 公式Facebookページはこちら →
+    </a>
   </div>
 </footer>
+
+<script>
+(function(){
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  if(!toggle || !menu) return;
+
+  function setMenu(open){
+    menu.classList.toggle('is-open', open);
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    menu.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  toggle.addEventListener('click', function(){
+    setMenu(!menu.classList.contains('is-open'));
+  });
+
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ setMenu(false); });
+  });
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 900) setMenu(false);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') setMenu(false);
+  });
+})();
+</script>
 
 </body>
 </html>
