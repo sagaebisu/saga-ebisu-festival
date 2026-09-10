@@ -269,7 +269,7 @@ header{
 }
 .event-card:hover{transform:translateY(-4px)}
 .event-photo{aspect-ratio:4/3;background:#eee7cc;overflow:hidden}
-.event-photo img{width:100%;height:100%;object-fit:cover}
+.event-photo img{width:100%;height:100%;object-fit:cover}.event-photo img.pos-top{object-position:center top}.event-photo img.pos-center{object-position:center}.event-photo img.pos-bottom{object-position:center bottom}
 .event-body{padding:18px}
 .event-body h3{font-family:"Noto Serif JP",serif;font-size:18px;margin:0 0 5px;color:var(--red)}
 .event-body p{font-size:12px;color:var(--muted);margin:0}
@@ -524,7 +524,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
       <article class="event-card">
         <div class="event-photo">
-          <div class="photo-coming">写真準備中</div>
+          <img src="assets/ebisu-lottery.jpg" alt="えびす大抽選会" class="pos-center" loading="lazy">
         </div>
         <div class="event-body">
           <h3>えびす大抽選会</h3>
@@ -534,7 +534,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
       <article class="event-card">
         <div class="event-photo">
-          <div class="photo-coming">写真準備中</div>
+          <img src="assets/fukuo-race.jpg" alt="開運！福男走!!" class="pos-center" loading="lazy">
         </div>
         <div class="event-body">
           <h3>開運！福男走!!</h3>
@@ -544,7 +544,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
       <article class="event-card">
         <div class="event-photo">
-          <div class="photo-coming">写真準備中</div>
+          <img src="assets/nodojiman.png" alt="企業対抗のど自慢大会" class="pos-center" loading="lazy">
         </div>
         <div class="event-body">
           <h3>企業対抗のど自慢大会</h3>
@@ -556,13 +556,29 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
     <div class="event-grid" style="margin-top:18px">
       <article class="event-card">
+        <div class="event-photo">
+          <img src="assets/fukuzasa.jpg" alt="福笹販売" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
-          <h3>福笹・縁起物販売</h3>
-          <p>福を招く縁起物をお求めいただけます。</p>
+          <h3>福笹販売</h3>
+          <p>新しい年の福を招く福笹をお求めいただけます。</p>
         </div>
       </article>
 
       <article class="event-card">
+        <div class="event-photo">
+          <img src="assets/engi-mono.jpg" alt="縁起物販売" class="pos-center" loading="lazy">
+        </div>
+        <div class="event-body">
+          <h3>縁起物販売</h3>
+          <p>新しい年の福をお迎えする縁起物を販売します。</p>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-photo">
+          <img src="assets/kofuda.jpg" alt="古札預かり" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>古札預かり</h3>
           <p>古いお札やお守りをお預かりします。</p>
@@ -570,6 +586,9 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
 
       <article class="event-card">
+        <div class="event-photo">
+          <img src="assets/sketch.jpg" alt="えびすスケッチ大会" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>えびすスケッチ大会</h3>
           <p>恵比須様を楽しく描いてみよう！</p>
