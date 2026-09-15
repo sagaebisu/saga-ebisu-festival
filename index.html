@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="佐賀恵比須神社 佐賀十日恵比須大祭｜令和9年1月9日・10日">
-<title>佐賀十日恵比須大祭｜「エイ!エイ!オー!」で佐賀の福をアップデート!!</title>
+<title>佐賀十日恵比須大祭｜「エイ・エイ・エイ・オー!」で佐賀の福をアップデート!!</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -497,13 +497,28 @@ footer small{display:block;margin-top:8px;opacity:.85}
   .committee-count span{font-size:10px;padding:6px 9px}
   .committee-group{margin-top:40px}
   .committee-group-title{font-size:23px}
-  .committee-grid-fuku{gap:9px}
-  .committee-grid-small{grid-template-columns:repeat(2,1fr);gap:10px}
+  .committee-grid-fuku{grid-template-columns:repeat(2,1fr);gap:9px}
+  .committee-grid-small{grid-template-columns:repeat(3,1fr);gap:10px}
   .committee-body{padding:10px 8px 12px}
   .committee-name{font-size:16px}
   .committee-company{font-size:10px}
 }
 
+
+/* ===== 佐賀恵比須会 ===== */
+.saga-ebisu-section{background:linear-gradient(180deg,#fffdf6 0%,#f8f3e4 100%)}
+.saga-ebisu-block{margin-top:36px}
+.saga-ebisu-title{margin:0 0 14px;color:var(--red);font-family:"Noto Serif JP",serif;font-size:23px}
+.name-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.name-list>div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 12px;text-align:center;font-weight:700}
+.name-list span{display:block;color:var(--muted);font-size:11px;margin-bottom:2px}
+.name-list strong{display:block;font-family:"Noto Serif JP",serif;font-weight:900;line-height:1.45}
+.name-list small{display:block;color:var(--muted);font-size:10px;line-height:1.55;margin-top:3px;font-weight:500}
+.saga-ebisu-note{margin:20px 0 0;text-align:right;color:var(--muted);font-size:11px}
+
+.officer-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.officer-group h4{margin:0 0 9px;color:#6d5b2e;font-family:"Noto Serif JP",serif;font-size:18px}
+@media(max-width:620px){.name-list{grid-template-columns:repeat(2,1fr);gap:8px}.name-list>div{padding:10px 7px;font-size:14px}.officer-groups{grid-template-columns:1fr;gap:18px}.saga-ebisu-title{font-size:21px}}
 </style>
 </head>
 
@@ -523,6 +538,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#events">イベント</a>
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
+      <a href="#saga-ebisu">佐賀恵比須会</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
     </nav>
@@ -538,6 +554,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#events">イベント</a>
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
+      <a href="#saga-ebisu">佐賀恵比須会</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
       <a class="facebook-link" href="https://www.facebook.com/sagaebisukai"
@@ -560,7 +577,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <div class="eyebrow">SAGA TOKA EBISU GRAND FESTIVAL</div>
 
       <h1 class="catch">
-        <span class="line1">「エイ!エイ!オー!」で</span>
+        <span class="line1">「エイ・エイ・エイ・オー!」で</span>
         <span class="line2">佐賀の福をアップデート!!</span>
         <span class="mark">――――――――</span>
       </h1>
@@ -593,7 +610,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
         町中に恵比須像が溢れる佐賀で、明治37年に実業家たちが西宮神社から御神像をお迎えしたことから始まりました。
       </p>
       <p>
-        会場の與賀神社では、威勢のいい福笹売りの掛け声や「エイ・エイ・オー！」の威勢のいい打ち込み、
+        会場の與賀神社では、威勢のいい福笹売りの掛け声や「エイ・エイ・エイ・オー!」の威勢のいい打ち込み、
         大当たりを知らせる太鼓と大歓声が響き渡ります！
       </p>
       <p>
@@ -1008,7 +1025,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
         <div class="committee-body">
           <div class="committee-role">小恵比須</div>
           <div class="committee-name">小山淳也</div>
-          <div class="committee-company">有限会社 ジョイックス交通<br>代表取締役</div>
+          <div class="committee-company">有限会社ジョイックスシステム・有限会社ジョイックス交通<br>代表取締役</div>
         </div>
       </article>
       <article class="committee-card committee-小恵比須">
@@ -1200,7 +1217,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
         <div class="committee-body">
           <div class="committee-role">小恵比須</div>
           <div class="committee-name">森武秀樹</div>
-          <div class="committee-company">佐賀商工会議所<br>企業支援部　経営支援課　課長　経営指導員</div>
+          <div class="committee-company">佐賀商工会議所<br>総務部　副部長兼経理課長</div>
         </div>
       </article>
       <article class="committee-card committee-小恵比須">
@@ -1253,6 +1270,106 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section class="section saga-ebisu-section" id="saga-ebisu">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">SAGA EBISU KAI</div>
+      <h2>佐賀恵比須会</h2>
+      <p>祭典委員の下に、佐賀恵比須会の歴代名誉会長・歴代会長と令和8年度役員をご紹介します。</p>
+    </div>
+
+    <div class="saga-ebisu-block">
+      <h3 class="saga-ebisu-title">歴代名誉会長</h3>
+      <div class="name-list">
+        <div><span>初代</span><strong>香月 義人</strong><small>株式会社佐賀銀行　会長</small></div>
+        <div><span>二代</span><strong>鵜池 四郎</strong><small>理研農産加工株式会社　会長</small></div>
+        <div><span>三代</span><strong>西村 正俊</strong><small>&nbsp;</small></div>
+        <div><span>四代</span><strong>香月 孝</strong><small>株式会社北島　代表取締役会長</small></div>
+        <div><span>五代</span><strong>竹下 敏昭</strong><small>竹下製菓株式会社　代表取締役会長</small></div>
+        <div><span>六代</span><strong>円田 稔</strong><small>西九州マツダ株式会社　名誉会長</small></div>
+      </div>
+    </div>
+
+    <div class="saga-ebisu-block">
+      <h3 class="saga-ebisu-title">歴代会長</h3>
+      <div class="name-list">
+        <div><span>初代</span><strong>原 伊八</strong><small>原商店　社長</small></div>
+        <div><span>二代</span><strong>西村 徳久治</strong><small>株式会社桃太郎　会長</small></div>
+        <div><span>三代</span><strong>北島 常一</strong><small>株式会社北島商店　会長</small></div>
+        <div><span>四代</span><strong>鵜池 四郎</strong><small>理研農産加工株式会社　会長</small></div>
+        <div><span>五代</span><strong>伊藤 仁七</strong><small>伊藤時計　会長</small></div>
+        <div><span>六代</span><strong>香月 孝</strong><small>株式会社北島　代表取締役会長</small></div>
+        <div><span>七代</span><strong>竹下 敏昭</strong><small>竹下製菓株式会社　代表取締役会長</small></div>
+        <div><span>八代</span><strong>円田 稔</strong><small>西九州マツダ株式会社　名誉会長</small></div>
+        <div><span>九代</span><strong>福岡 桂</strong><small>福岡商店株式会社　代表取締役社長（当代）</small></div>
+      </div>
+    </div>
+
+    <div class="saga-ebisu-block">
+      <h3 class="saga-ebisu-title">令和8年度 佐賀恵比須会 役員メンバー</h3>
+      <div class="officer-groups">
+        <div class="officer-group">
+          <h4>名誉会長</h4>
+          <div class="name-list">
+            <div><strong>円田 稔</strong><small>株式会社 西九州マツダ　名誉会長</small></div>
+          </div>
+        </div>
+        <div class="officer-group">
+          <h4>会長</h4>
+          <div class="name-list">
+            <div><strong>福岡 桂</strong><small>株式会社 福岡商店　代表取締役社長</small></div>
+          </div>
+        </div>
+        <div class="officer-group">
+          <h4>副会長</h4>
+          <div class="name-list">
+            <div><strong>本島 直幸</strong><small>株式会社 モトシマ　代表取締役会長</small></div>
+            <div><strong>永田 はる奈</strong><small>佐賀富士ベンディング株式会社　代表取締役</small></div>
+            <div><strong>川代 勇一</strong><small>有限会社 川代テント工業　代表取締役社長</small></div>
+          </div>
+        </div>
+        <div class="officer-group">
+          <h4>監事</h4>
+          <div class="name-list">
+            <div><strong>吉田 康治</strong><small>株式会社 SANKYO.GEM　取締役会長</small></div>
+            <div><strong>岸川 正人</strong><small>合名会社 楊柳亭　社長</small></div>
+          </div>
+        </div>
+        <div class="officer-group">
+          <h4>理事</h4>
+          <div class="name-list">
+            <div><strong>牛島 征四郎</strong><small>株式会社 佐賀タクシー　代表取締役会長</small></div>
+            <div><strong>宮地 敏昭</strong><small>株式会社 ぷらざ　会長</small></div>
+            <div><strong>小栁 弘毅</strong><small>ウツノミヤ株式会社　会長</small></div>
+            <div><strong>中村 敏郎</strong><small>&nbsp;</small></div>
+            <div><strong>川島 晃</strong><small>五誠機械産業株式会社　代表取締役会長</small></div>
+            <div><strong>古賀 俊海</strong><small>中央警備保障株式会社　代表取締役</small></div>
+            <div><strong>大嶋 公子</strong><small>能 宝生流教授 舞謳会主宰　主宰</small></div>
+            <div><strong>永田 晴久</strong><small>株式会社永田　会長</small></div>
+            <div><strong>古賀 トシ子</strong><small>株式会社全日警佐賀　会長</small></div>
+            <div><strong>田中丸 雅夫</strong><small>株式会社 佐賀玉屋　相談役</small></div>
+            <div><strong>小松 敏正</strong><small>小松商店金属部　代表</small></div>
+            <div><strong>福岡 英信</strong><small>医療法人 福翔会福岡病院　理事長</small></div>
+            <div><strong>牟田 清敬</strong><small>牟田法律事務所　所長</small></div>
+            <div><strong>堤 浩一</strong><small>株式会社 スーパーモリナガ　代表取締役社長</small></div>
+            <div><strong>鳥屋 正人</strong><small>株式会社 ロジコム　代表取締役社長</small></div>
+            <div><strong>香月 道生</strong><small>株式会社 北島　代表取締役社長</small></div>
+          </div>
+        </div>
+        <div class="officer-group">
+          <h4>事務局長</h4>
+          <div class="name-list">
+            <div><strong>溝上 忠秀</strong><small>與賀神社　宮司</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="saga-ebisu-note">※会社名・役職名は当時のものです</p>
   </div>
 </section>
 
