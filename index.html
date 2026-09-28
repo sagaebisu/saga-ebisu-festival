@@ -1485,8 +1485,10 @@ footer small{display:block;margin-top:8px;opacity:.85}
     </div>
     <div class="news-card">
       <ul class="news-list">
+<li><time>2026.09.28</time><a href="#committee-history">歴代祭典委員を追加しました</a></li>
+
 <li><time>2026.09.25</time><a href="event-fukuotoko.html">福男走の概要・詳細追加しました</a></li>
-        <li><time>2026.09.28</time><a href="#committee-history">歴代祭典委員を追加しました</a></li>
+        
         
         <li><time>2026.09</time><a href="#saga-ebisu">佐賀恵比須会を公開しました</a></li>
         <li><time>2026.09</time><a href="#committee">祭典委員を公開しました</a></li>
@@ -1664,6 +1666,17 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
   search.addEventListener('input',render);
 })();
+</script>
+
+
+<script>
+/* 歴代祭典委員フィルター仕様 */
+document.addEventListener("DOMContentLoaded", function () {
+  const era = document.getElementById("eraFilter");
+  const role = document.getElementById("roleFilter");
+  if (era) era.value = "";
+  if (role) role.value = "";
+});
 </script>
 
 </body>
