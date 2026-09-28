@@ -566,6 +566,9 @@ footer small{display:block;margin-top:8px;opacity:.85}
 .news-list li time{display:inline-block;width:76px;flex:0 0 76px;margin-right:12px}
 .news-list li a{flex:1}
 
+
+.history-era{font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap}
+
 </style>
 </head>
 
@@ -586,6 +589,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
       <a href="#saga-ebisu">佐賀恵比須会</a>
+      <a href="#committee-history">歴代祭典委員</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
     </nav>
@@ -602,6 +606,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
       <a href="#saga-ebisu">佐賀恵比須会</a>
+      <a href="#committee-history">歴代祭典委員</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
       <a class="facebook-link" href="https://www.facebook.com/sagaebisukai"
@@ -1327,34 +1332,6 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
 
 
-<section class="section committee-history-section" id="committee-history">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">HISTORY OF THE FESTIVAL COMMITTEE</div>
-      <h2>歴代祭典委員</h2>
-      <p>初代から第五十四代までの歴代祭典委員を掲載しています。名前・会社名・役職・元号で検索できます。</p>
-    </div>
-
-    <p class="committee-history-intro">大恵比須は写真も掲載しています。今後写真を追加する場合は、imageフォルダに「06.jpg」「07.jpg」のように代数に対応した写真を追加するだけで表示できます。</p>
-
-    <div class="history-tools" aria-label="歴代祭典委員検索">
-      <input id="historySearch" type="search" placeholder="名前・会社名・役職・元号で検索" aria-label="名前・会社名・役職・元号で検索">
-      <select id="historyGeneration" aria-label="代を選択">
-        <option value="">すべての代</option>
-      </select>
-      <select id="historyRole" aria-label="恵比須区分を選択">
-        <option value="">すべて</option>
-        <option value="大恵比須">大恵比須</option>
-        <option value="福恵比須">福恵比須</option>
-        <option value="小恵比須">小恵比須</option>
-      </select>
-    </div>
-
-    <p class="history-status" id="historyStatus">名簿データを読み込んでいます。</p>
-    <div class="history-list" id="historyList" aria-live="polite"></div>
-  </div>
-</section>
-
 <section class="section saga-ebisu-section" id="saga-ebisu">
   <div class="wrap">
     <div class="section-head">
@@ -1455,6 +1432,24 @@ footer small{display:block;margin-top:8px;opacity:.85}
   </div>
 </section>
 
+<section class="section committee-history-section" id="committee-history">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">HISTORY OF THE FESTIVAL COMMITTEE</div>
+      <h2>歴代祭典委員</h2>
+      <p>初代から第五十四代までの歴代祭典委員を掲載しています。名前・会社名・役職・元号・代を検索できます。</p>
+    </div>
+
+    <div class="history-tools" aria-label="歴代祭典委員検索">
+      <input id="historySearch" type="search" placeholder="名前・会社名・役職・元号・代（数字・漢字）で検索" aria-label="歴代祭典委員を検索">
+    </div>
+
+    <p class="history-status" id="historyStatus">名前・会社名・役職・元号・代を入力して検索してください。</p>
+    <div class="history-list" id="historyList" aria-live="polite"></div>
+  </div>
+</section>
+
+
 <section class="section" id="access">
   <div class="wrap">
     <div class="section-head">
@@ -1491,6 +1486,8 @@ footer small{display:block;margin-top:8px;opacity:.85}
     <div class="news-card">
       <ul class="news-list">
 <li><time>2026.09.25</time><a href="event-fukuotoko.html">福男走の概要・詳細追加しました</a></li>
+        <li><time>2026.09.28</time><a href="#committee-history">歴代祭典委員を追加しました</a></li>
+        
         <li><time>2026.09</time><a href="#saga-ebisu">佐賀恵比須会を公開しました</a></li>
         <li><time>2026.09</time><a href="#committee">祭典委員を公開しました</a></li>
         <li><time>2026.09</time><a href="#top">令和9年 佐賀十日恵比須大祭 特設サイトを公開しました。</a></li>
@@ -1551,75 +1548,100 @@ footer small{display:block;margin-top:8px;opacity:.85}
 <script>
 (function(){
   const search = document.getElementById('historySearch');
-  const generation = document.getElementById('historyGeneration');
-  const role = document.getElementById('historyRole');
   const list = document.getElementById('historyList');
   const status = document.getElementById('historyStatus');
-  if(!search || !generation || !role || !list || !status) return;
+  if(!search || !list || !status) return;
 
   let records = [];
-  const genMap = {
-    '初代':'01','第二代':'02','第三代':'03','第四代':'04','第五代':'05',
-    '第六代':'06','第七代':'07','第八代':'08','第九代':'09'
-  };
-  const kanjiNums = {'一':'1','二':'2','三':'3','四':'4','五':'5','六':'6','七':'7','八':'8','九':'9','十':'10','百':'100'};
 
-  function cleanGeneration(value){
-    return String(value || '').replace(/（.*?）/g,'').trim();
-  }
-  function generationNumber(label){
-    if(label === '初代') return 1;
-    const m = label.match(/^第([一二三四五六七八九十百]+)代$/);
-    if(!m) return 999;
-    const s = m[1];
-    if(/^\d+$/.test(s)) return Number(s);
+  const kanjiDigits = {'〇':0,'零':0,'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9};
+  function kanjiNumberToArabic(str){
     let total=0, current=0;
-    for(const ch of s){
-      const n = Number(kanjiNums[ch] || 0);
-      if(n === 10 || n === 100){ total += (current || 1) * n; current=0; }
-      else current=n;
+    const units={'十':10,'百':100,'千':1000};
+    for(const ch of String(str)){
+      if(ch in kanjiDigits){ current=kanjiDigits[ch]; }
+      else if(ch in units){
+        total += (current || 1) * units[ch];
+        current=0;
+      }
     }
     return total + current;
   }
-  function imageNumber(label){
-    const n = generationNumber(label);
-    return n >= 1 && n <= 99 ? String(n).padStart(2,'0') : '';
+  function generationNumber(label){
+    const s=String(label||'');
+    if(s.includes('初代')) return 1;
+    const m=s.match(/第([一二三四五六七八九十百千0-9]+)代/);
+    if(!m) return 0;
+    const raw=m[1];
+    return /^\d+$/.test(raw) ? Number(raw) : kanjiNumberToArabic(raw);
   }
-  function esc(value){
-    return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function cleanGeneration(value){
+    return String(value||'').replace(/（.*?）/g,'').trim();
   }
   function normalize(value){
-    return String(value ?? '').replace(/\s+/g,'').toLowerCase();
+    return String(value??'').replace(/\s+/g,'').toLowerCase();
+  }
+  function esc(value){
+    return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function searchHay(item){
+    const gen=cleanGeneration(item['代']);
+    const n=generationNumber(gen);
+    const arabic=n ? String(n) : '';
+    const kanji=gen.replace(/^第/,'').replace(/代$/,'');
+    const genForms=[
+      item['代'], gen, arabic, `第${arabic}代`, `${arabic}代`,
+      n===1?'初代':`第${kanji}代`
+    ];
+    return normalize([
+      ...genForms,
+      item['恵比須'],
+      item['名前'],
+      item['会社名・団体名'],
+      item['役職'],
+      item['年号'],
+      item['年号.1']
+    ].join(' '));
+  }
+  function imageNumber(label){
+    const n=generationNumber(label);
+    return n>=1 && n<=99 ? String(n).padStart(2,'0') : '';
   }
 
   function render(){
-    const q = normalize(search.value);
-    const g = generation.value;
-    const r = role.value;
-    const filtered = records.filter(item => {
-      const gen = cleanGeneration(item['代']);
-      const hay = normalize([item['代'], item['恵比須'], item['名前'], item['会社名・団体名'], item['役職'], item['年号']].join(' '));
-      return (!q || hay.includes(q)) && (!g || gen === g) && (!r || item['恵比須'] === r);
-    });
-
-    status.textContent = `${filtered.length.toLocaleString()}名を表示しています（全${records.length.toLocaleString()}名）`;
-    if(!filtered.length){
-      list.innerHTML = '<div class="history-empty">該当する名簿がありません。</div>';
+    const q=normalize(search.value);
+    if(!q){
+      list.innerHTML='';
+      status.textContent='名前・会社名・役職・元号・代を入力して検索してください。';
       return;
     }
 
-    const html = [
+    const filtered=records.filter(item=>searchHay(item).includes(q));
+    status.textContent=`${filtered.length.toLocaleString()}名を表示しています（全${records.length.toLocaleString()}名）`;
+
+    if(!filtered.length){
+      list.innerHTML='<div class="history-empty">該当する名簿がありません。</div>';
+      return;
+    }
+
+    const html=[
       '<div class="history-row header"><div>代</div><div>区分</div><div>名前</div><div>会社名・団体名</div><div>役職</div><div>写真</div></div>'
     ];
+
     for(const item of filtered){
-      const gen = cleanGeneration(item['代']);
-      const isDaiebisu = item['恵比須'] === '大恵比須';
-      const imgNo = imageNumber(gen);
-      const photo = isDaiebisu && imgNo
+      const gen=cleanGeneration(item['代']);
+      const isDaiebisu=item['恵比須']==='大恵比須';
+      const imgNo=imageNumber(gen);
+      const year=item['年号'] || item['年号.1'] || '';
+      const generationDisplay=isDaiebisu && year
+        ? `${esc(gen)} <small class="history-era">（${esc(year)}）</small>`
+        : esc(gen);
+      const photo=isDaiebisu && imgNo
         ? `<img class="history-daiebisu-photo" src="image/${imgNo}.jpg" alt="${esc(gen)} 大恵比須 ${esc(item['名前'])}" loading="lazy" onerror="this.classList.add('is-missing')">`
         : '';
-      html.push(`<div class="history-row${isDaiebisu ? ' is-daiebisu' : ''}">
-        <div class="generation">${esc(gen)}</div>
+
+      html.push(`<div class="history-row${isDaiebisu?' is-daiebisu':''}">
+        <div class="generation">${generationDisplay}</div>
         <div class="role">${esc(item['恵比須'])}</div>
         <div class="name">${esc(item['名前'])}</div>
         <div class="company">${esc(item['会社名・団体名'])}</div>
@@ -1627,25 +1649,20 @@ footer small{display:block;margin-top:8px;opacity:.85}
         <div class="photo">${photo}</div>
       </div>`);
     }
-    list.innerHTML = html.join('');
+    list.innerHTML=html.join('');
   }
 
   fetch('rekidai_ebisu_all.json')
-    .then(res => { if(!res.ok) throw new Error('JSON load failed'); return res.json(); })
-    .then(data => {
-      records = Array.isArray(data) ? data : (data['恵比須名簿'] || []);
-      const generations = [...new Set(records.map(x => cleanGeneration(x['代'])).filter(Boolean))]
-        .sort((a,b) => generationNumber(a) - generationNumber(b));
-      generation.insertAdjacentHTML('beforeend', generations.map(g => `<option value="${esc(g)}">${esc(g)}</option>`).join(''));
-      render();
+    .then(res=>{if(!res.ok) throw new Error('JSON load failed'); return res.json();})
+    .then(data=>{
+      records=Array.isArray(data)?data:(data['恵比須名簿']||[]);
+      status.textContent='名前・会社名・役職・元号・代を入力して検索してください。';
     })
-    .catch(() => {
-      status.textContent = '名簿データを読み込めませんでした。rekidai_ebisu_all.jsonがindex.htmlと同じ場所にあるか確認してください。';
+    .catch(()=>{
+      status.textContent='名簿データを読み込めませんでした。rekidai_ebisu_all.jsonがindex.htmlと同じ場所にあるか確認してください。';
     });
 
-  search.addEventListener('input', render);
-  generation.addEventListener('change', render);
-  role.addEventListener('change', render);
+  search.addEventListener('input',render);
 })();
 </script>
 
