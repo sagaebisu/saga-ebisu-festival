@@ -307,7 +307,6 @@ header{
 .event-body{padding:18px}
 .event-body h3{font-family:"Noto Serif JP",serif;font-size:18px;margin:0 0 5px;color:var(--red)}
 .event-body p{font-size:12px;color:var(--muted);margin:0}
-.event-detail-link{display:inline-block;margin-top:10px;color:var(--red);font-size:12px;font-weight:900}.event-detail-link:hover{text-decoration:underline}
 .photo-coming{
   height:100%;display:grid;place-items:center;
   color:#8a7d59;font-size:12px;
@@ -506,45 +505,6 @@ footer small{display:block;margin-top:8px;opacity:.85}
 }
 
 
-
-/* ===== 歴代祭典委員アーカイブ ===== */
-.committee-history-section{background:#fff}
-.committee-history-intro{color:var(--muted);line-height:1.8;margin:0 0 18px}
-.history-tools{display:grid;grid-template-columns:1fr 180px 180px;gap:10px;margin:18px 0 16px}
-.history-tools input,.history-tools select{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;background:#fff;padding:11px 12px;font:inherit;color:var(--ink)}
-.history-status{font-size:12px;color:var(--muted);margin:0 0 12px}
-.history-list{border-top:1px solid var(--line)}
-.history-row{display:grid;grid-template-columns:92px 88px minmax(120px,1.1fr) minmax(150px,1.4fr) minmax(120px,1fr) 62px;gap:10px;align-items:center;padding:9px 8px;border-bottom:1px solid #eee;font-size:12px;line-height:1.5}
-.history-row.header{background:#f8f3e4;font-weight:800;color:#6d5b2e;position:sticky;top:0;z-index:1}
-.history-row .generation,.history-row .role,.history-row .year{color:var(--muted)}
-.history-row .name{font-family:"Noto Serif JP",serif;font-weight:900;font-size:14px}
-.history-daiebisu-photo{width:52px;height:68px;object-fit:cover;border-radius:6px;display:block;margin:auto;background:#eee}
-.history-daiebisu-photo.is-missing{display:none}
-.history-row.is-daiebisu{background:#fffaf0}
-.history-empty{padding:28px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line)}
-.history-more{margin-top:16px;text-align:center}
-.history-more button{border:1px solid var(--red);background:#fff;color:var(--red);border-radius:999px;padding:9px 18px;font-weight:800;cursor:pointer}
-.history-jump{display:inline-block;margin:0 0 20px;padding:9px 16px;border-radius:999px;background:var(--red);color:#fff;text-decoration:none;font-weight:800}
-@media(max-width:900px){
-  .history-tools{grid-template-columns:1fr 1fr}
-  .history-tools input{grid-column:1/-1}
-  .history-row{grid-template-columns:72px 70px minmax(100px,1fr) minmax(120px,1.2fr) 56px;font-size:11px}
-  .history-row .role{display:none}
-}
-@media(max-width:620px){
-  .history-tools{grid-template-columns:1fr}
-  .history-tools input{grid-column:auto}
-  .history-row{grid-template-columns:54px 1fr 52px;gap:7px;padding:9px 4px}
-  .history-row.header{display:none}
-  .history-row .role,.history-row .company{grid-column:2}
-  .history-row .role{display:block;font-size:10px}
-  .history-row .year{grid-column:1}
-  .history-row .photo{grid-column:3;grid-row:1 / span 2}
-  .history-row .name{grid-column:2;font-size:14px}
-  .history-row .company{font-size:10px;color:var(--muted)}
-  .history-daiebisu-photo{width:46px;height:60px}
-}
-
 /* ===== 佐賀恵比須会 ===== */
 .saga-ebisu-section{background:linear-gradient(180deg,#fffdf6 0%,#f8f3e4 100%)}
 .saga-ebisu-block{margin-top:36px}
@@ -560,17 +520,14 @@ footer small{display:block;margin-top:8px;opacity:.85}
 .officer-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .officer-group h4{margin:0 0 9px;color:#6d5b2e;font-family:"Noto Serif JP",serif;font-size:18px}
 @media(max-width:620px){.name-list{grid-template-columns:repeat(2,1fr);gap:8px}.name-list>div{padding:10px 7px;font-size:14px}.officer-groups{grid-template-columns:1fr;gap:18px}.saga-ebisu-title{font-size:21px}}
-.news-list a{color:inherit;text-decoration:none}.news-list a:hover{text-decoration:underline}
-/* お知らせ：日付の幅を揃えて本文の頭を統一 */
-.news-list li{display:flex;align-items:baseline;gap:0}
-.news-list li time{display:inline-block;width:76px;flex:0 0 76px;margin-right:12px}
-.news-list li a{flex:1}
-
-
-.history-era{font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap}
-
-</style>
-</head>
+.news-list a{color:inherit;text-decoration:none}.news-list a:hover{text-decoration:underline}</style>
+<style>
+.archive-section{background:linear-gradient(180deg,#fffdf6 0%,#f8f3e4 100%);border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light)}
+.archive-search{display:grid;grid-template-columns:minmax(0,1fr) 180px 180px auto;gap:12px;align-items:end;max-width:1000px;margin:0 auto;padding:22px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.archive-field label{display:block;margin-bottom:6px;color:var(--red);font-size:12px;font-weight:900}.archive-field input,.archive-field select{width:100%;height:46px;padding:8px 12px;border:1px solid #d8cba7;border-radius:9px;background:#fffdf8;color:var(--ink)}
+.archive-search-btn{height:46px;border:0;border-radius:999px;padding:0 24px;background:var(--red);color:#fff;font-weight:900;cursor:pointer}.archive-hint{max-width:1000px;margin:10px auto 0;color:var(--muted);font-size:11px}.archive-results{max-width:1000px;margin:24px auto 0}.archive-empty{padding:25px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--gold);border-radius:12px}.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.archive-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}.archive-card .archive-era{color:var(--red);font-size:11px;font-weight:900}.archive-card .archive-name{margin:2px 0 5px;font-family:"Noto Serif JP",serif;font-size:18px;font-weight:900}.archive-card .archive-meta{color:var(--muted);font-size:11px;line-height:1.7}.archive-daiebisu{border-top:4px solid var(--gold)}.archive-daiebisu .archive-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;margin-bottom:10px}
+@media(max-width:900px){.archive-search{grid-template-columns:1fr 1fr}.archive-keyword{grid-column:1/-1}.archive-search-btn{width:100%}.archive-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.archive-search{grid-template-columns:1fr;padding:16px}.archive-keyword{grid-column:auto}.archive-grid{grid-template-columns:1fr}}
+</style></head>
 
 <body>
 
@@ -588,8 +545,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#events">イベント</a>
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
-      <a href="#saga-ebisu">佐賀恵比須会</a>
-      <a href="#committee-history">歴代祭典委員</a>
+      <a href="#saga-ebisu">佐賀恵比須会</a><a href="#rekidai-committee">歴代祭典委員</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
     </nav>
@@ -605,8 +561,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#events">イベント</a>
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
-      <a href="#saga-ebisu">佐賀恵比須会</a>
-      <a href="#committee-history">歴代祭典委員</a>
+      <a href="#saga-ebisu">佐賀恵比須会</a><a href="#rekidai-committee">歴代祭典委員</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
       <a class="facebook-link" href="https://www.facebook.com/sagaebisukai"
@@ -766,7 +721,6 @@ footer small{display:block;margin-top:8px;opacity:.85}
         <div class="event-body">
           <h3>開運！福男走!!</h3>
           <p>新春の健脚行事。今年の福男は誰だ！</p>
-          <a class="event-detail-link" href="event-fukuotoko.html">詳細を見る →</a>
         </div>
       </article>
 
@@ -826,7 +780,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
     </div>
 
     <div class="notice">
-      
+      ※ステージ参加者・タイムテーブル等は決定次第ご案内します。
     </div>
   </div>
 </section>
@@ -1324,12 +1278,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </div>
     </div>
   </div>
-  <div class="wrap" style="margin-top:22px;text-align:center;">
-    <a class="history-jump" href="#committee-history">歴代祭典委員を見る ↓</a>
-  </div>
-
 </section>
-
 
 
 <section class="section saga-ebisu-section" id="saga-ebisu">
@@ -1432,24 +1381,18 @@ footer small{display:block;margin-top:8px;opacity:.85}
   </div>
 </section>
 
-<section class="section committee-history-section" id="committee-history">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">HISTORY OF THE FESTIVAL COMMITTEE</div>
-      <h2>歴代祭典委員</h2>
-      <p>初代から第五十四代までの歴代祭典委員を掲載しています。名前・会社名・役職・元号・代を検索できます。</p>
-    </div>
-
-    <div class="history-tools" aria-label="歴代祭典委員検索">
-      <input id="historySearch" type="search" placeholder="名前・会社名・役職・元号・代（数字・漢字）で検索" aria-label="歴代祭典委員を検索">
-    </div>
-
-    <p class="history-status" id="historyStatus">名前・会社名・役職・元号・代を入力して検索してください。</p>
-    <div class="history-list" id="historyList" aria-live="polite"></div>
-  </div>
-</section>
-
-
+<section class="section archive-section" id="rekidai-committee">
+<div class="wrap">
+<div class="section-head"><div class="eyebrow">HISTORY</div><h2>歴代祭典委員</h2><p>歴代の佐賀恵比須会祭典委員を検索できます。</p></div>
+<div class="archive-search">
+<div class="archive-field archive-keyword"><label for="archiveKeyword">検索</label><input id="archiveKeyword" type="search" placeholder="名前・会社名・役職・元号などを入力"></div>
+<div class="archive-field"><label for="archiveEra">代</label><select id="archiveEra"><option value="">空白</option><option value="all">すべて</option></select></div>
+<div class="archive-field"><label for="archiveRole">役職</label><select id="archiveRole"><option value="">空白</option><option value="all">すべて</option><option value="大恵比須">大恵比須</option><option value="福恵比須">福恵比須</option><option value="小恵比須">小恵比須</option></select></div>
+<button type="button" class="archive-search-btn" id="archiveSearchBtn">検索</button>
+</div>
+<p class="archive-hint">※最初は名簿を表示しません。検索条件を指定して「検索」を押してください。</p>
+<div id="archiveResults" class="archive-results" aria-live="polite"></div>
+</div></section>
 <section class="section" id="access">
   <div class="wrap">
     <div class="section-head">
@@ -1485,15 +1428,12 @@ footer small{display:block;margin-top:8px;opacity:.85}
     </div>
     <div class="news-card">
       <ul class="news-list">
-<li><time>2026.09.28</time><a href="#committee-history">歴代祭典委員を追加しました</a></li>
-
-<li><time>2026.09.25</time><a href="event-fukuotoko.html">福男走の概要・詳細追加しました</a></li>
-        
-        
+<li><time>2026.09.28</time><a href="#rekidai-committee">歴代祭典委員を追加しました</a></li>
         <li><time>2026.09</time><a href="#saga-ebisu">佐賀恵比須会を公開しました</a></li>
         <li><time>2026.09</time><a href="#committee">祭典委員を公開しました</a></li>
         <li><time>2026.09</time><a href="#top">令和9年 佐賀十日恵比須大祭 特設サイトを公開しました。</a></li>
         <li><time>2026.09</time>大祭のイベント情報を順次掲載しています。</li>
+        <li><time>近日</time>タイムテーブル・出演者・協賛企業等を掲載予定です。</li>
       </ul>
     </div>
   </div>
@@ -1546,138 +1486,18 @@ footer small{display:block;margin-top:8px;opacity:.85}
 })();
 </script>
 
-
 <script>
 (function(){
-  const search = document.getElementById('historySearch');
-  const list = document.getElementById('historyList');
-  const status = document.getElementById('historyStatus');
-  if(!search || !list || !status) return;
-
-  let records = [];
-
-  const kanjiDigits = {'〇':0,'零':0,'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9};
-  function kanjiNumberToArabic(str){
-    let total=0, current=0;
-    const units={'十':10,'百':100,'千':1000};
-    for(const ch of String(str)){
-      if(ch in kanjiDigits){ current=kanjiDigits[ch]; }
-      else if(ch in units){
-        total += (current || 1) * units[ch];
-        current=0;
-      }
-    }
-    return total + current;
-  }
-  function generationNumber(label){
-    const s=String(label||'');
-    if(s.includes('初代')) return 1;
-    const m=s.match(/第([一二三四五六七八九十百千0-9]+)代/);
-    if(!m) return 0;
-    const raw=m[1];
-    return /^\d+$/.test(raw) ? Number(raw) : kanjiNumberToArabic(raw);
-  }
-  function cleanGeneration(value){
-    return String(value||'').replace(/（.*?）/g,'').trim();
-  }
-  function normalize(value){
-    return String(value??'').replace(/\s+/g,'').toLowerCase();
-  }
-  function esc(value){
-    return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-  function searchHay(item){
-    const gen=cleanGeneration(item['代']);
-    const n=generationNumber(gen);
-    const arabic=n ? String(n) : '';
-    const kanji=gen.replace(/^第/,'').replace(/代$/,'');
-    const genForms=[
-      item['代'], gen, arabic, `第${arabic}代`, `${arabic}代`,
-      n===1?'初代':`第${kanji}代`
-    ];
-    return normalize([
-      ...genForms,
-      item['恵比須'],
-      item['名前'],
-      item['会社名・団体名'],
-      item['役職'],
-      item['年号'],
-      item['年号.1']
-    ].join(' '));
-  }
-  function imageNumber(label){
-    const n=generationNumber(label);
-    return n>=1 && n<=99 ? String(n).padStart(2,'0') : '';
-  }
-
-  function render(){
-    const q=normalize(search.value);
-    if(!q){
-      list.innerHTML='';
-      status.textContent='名前・会社名・役職・元号・代を入力して検索してください。';
-      return;
-    }
-
-    const filtered=records.filter(item=>searchHay(item).includes(q));
-    status.textContent=`${filtered.length.toLocaleString()}名を表示しています（全${records.length.toLocaleString()}名）`;
-
-    if(!filtered.length){
-      list.innerHTML='<div class="history-empty">該当する名簿がありません。</div>';
-      return;
-    }
-
-    const html=[
-      '<div class="history-row header"><div>代</div><div>区分</div><div>名前</div><div>会社名・団体名</div><div>役職</div><div>写真</div></div>'
-    ];
-
-    for(const item of filtered){
-      const gen=cleanGeneration(item['代']);
-      const isDaiebisu=item['恵比須']==='大恵比須';
-      const imgNo=imageNumber(gen);
-      const year=item['年号'] || item['年号.1'] || '';
-      const generationDisplay=isDaiebisu && year
-        ? `${esc(gen)} <small class="history-era">（${esc(year)}）</small>`
-        : esc(gen);
-      const photo=isDaiebisu && imgNo
-        ? `<img class="history-daiebisu-photo" src="image/${imgNo}.jpg" alt="${esc(gen)} 大恵比須 ${esc(item['名前'])}" loading="lazy" onerror="this.classList.add('is-missing')">`
-        : '';
-
-      html.push(`<div class="history-row${isDaiebisu?' is-daiebisu':''}">
-        <div class="generation">${generationDisplay}</div>
-        <div class="role">${esc(item['恵比須'])}</div>
-        <div class="name">${esc(item['名前'])}</div>
-        <div class="company">${esc(item['会社名・団体名'])}</div>
-        <div class="role">${esc(item['役職'])}</div>
-        <div class="photo">${photo}</div>
-      </div>`);
-    }
-    list.innerHTML=html.join('');
-  }
-
-  fetch('rekidai_ebisu_all.json')
-    .then(res=>{if(!res.ok) throw new Error('JSON load failed'); return res.json();})
-    .then(data=>{
-      records=Array.isArray(data)?data:(data['恵比須名簿']||[]);
-      status.textContent='名前・会社名・役職・元号・代を入力して検索してください。';
-    })
-    .catch(()=>{
-      status.textContent='名簿データを読み込めませんでした。rekidai_ebisu_all.jsonがindex.htmlと同じ場所にあるか確認してください。';
-    });
-
-  search.addEventListener('input',render);
+const q=document.getElementById("archiveKeyword"),era=document.getElementById("archiveEra"),role=document.getElementById("archiveRole"),btn=document.getElementById("archiveSearchBtn"),out=document.getElementById("archiveResults");if(!q||!era||!role||!btn||!out)return;
+let rows=[];
+const norm=x=>String(x??"").replace(/\s+/g,"").toLowerCase();
+const num=x=>{x=String(x??"");let m=x.match(/\d+/);if(m)return +m[0];const a=["零","一","二","三","四","五","六","七","八","九","十"];for(let n=1;n<=54;n++){let s=n<10?a[n]:n<20?"十"+(n%10?a[n%10]:""):n<30?"二十"+(n%10?a[n%10]:""):n<40?"三十"+(n%10?a[n%10]:""):n<50?"四十"+(n%10?a[n%10]:""):"五十"+(n%10?a[n%10]:"");if(x.includes(s))return n}return NaN};
+const gen=n=>n===1?"初代":`第${n}代`;
+const roleOf=r=>r["恵比須"]||r["役職区分"]||"", nameOf=r=>r["名前"]||r["氏名"]||"", companyOf=r=>r["会社名"]||r["会社名・団体名"]||"", titleOf=r=>r["役職"]||"", yearOf=r=>r["年号"]||r["元号"]||"", generation=r=>num(r["代"]||r["代数"]||"");
+function render(a){if(!a.length){out.innerHTML='<div class="archive-empty">該当する祭典委員が見つかりませんでした。</div>';return}let g=document.createElement("div");g.className="archive-grid";a.forEach(r=>{let n=generation(r),rr=roleOf(r),nm=nameOf(r),co=companyOf(r),ti=titleOf(r),yr=yearOf(r),d=norm(rr)===norm("大恵比須"),c=document.createElement("article");c.className="archive-card"+(d?" archive-daiebisu":"");if(d&&Number.isFinite(n)){let f=String(r["写真"]||`${String(n).padStart(2,"0")}.jpg`);c.innerHTML+=`<img class="archive-photo" src="image/${f}" alt="${nm}（${gen(n)}大恵比須）" loading="lazy" onerror="this.style.display='none'>`}c.innerHTML+=`<div class="archive-era">${Number.isFinite(n)?gen(n):(r["代"]||"")}${d&&yr?`（${yr}）`:""}</div><div class="archive-name">${nm}</div><div class="archive-meta">${co}${co&&ti?"<br>":""}${ti}</div><div class="archive-meta">${rr}</div>`;g.appendChild(c)});out.innerHTML="";out.appendChild(g)}
+function search(){let s=norm(q.value),e=era.value,r=role.value;if(!s&&!e&&!r){out.innerHTML="";return}render(rows.filter(x=>(!s||norm([x["代"],x["元号"],x["年号"],nameOf(x),companyOf(x),titleOf(x),roleOf(x)].join(" ")).includes(s))&&(!e||e==="all"||String(generation(x))===e)&&(!r||r==="all"||norm(roleOf(x))===norm(r))))}
+btn.onclick=search;q.onkeydown=e=>{if(e.key==="Enter")search()};
+fetch("rekidai_ebisu_all.json").then(r=>r.json()).then(d=>{rows=Array.isArray(d)?d:(Object.values(d).find(v=>Array.isArray(v))||[]);let ns=[...new Set(rows.map(generation).filter(Number.isFinite))].sort((a,b)=>a-b);era.innerHTML='<option value="">空白</option><option value="all">すべて</option>'+ns.map(n=>`<option value="${n}">${gen(n)}</option>`).join("")}).catch(()=>out.innerHTML='<div class="archive-empty">名簿データを読み込めませんでした。</div>');
 })();
-</script>
-
-
-<script>
-/* 歴代祭典委員フィルター仕様 */
-document.addEventListener("DOMContentLoaded", function () {
-  const era = document.getElementById("eraFilter");
-  const role = document.getElementById("roleFilter");
-  if (era) era.value = "";
-  if (role) role.value = "";
-});
-</script>
-
-</body>
+</script></body>
 </html>
