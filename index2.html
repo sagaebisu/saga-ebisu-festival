@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トップページ</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, "平城角ゴシック ProN", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header, main, footer {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        nav a {
+            color: #0044cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .event-link {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #0044cc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .event-link:hover {
+            background-color: #002a80;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>サイトタイトル</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="event-fukuotoko.html">福男走の詳細</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>イベント案内</h2>
+            <p>イベントに関する案内テキストをここに入力してください。</p>
+            <!-- 福男走詳細ページへのリンク -->
+            <a href="event-fukuotoko.html" class="event-link">福男走の詳細はこちら</a>
+        </section>
+
+        <section>
+            <h2>歴代祭典委員（歴代恵比須）</h2>
+            <p>※ワード検索機能は使用せず、以下に全件表示しています。</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>年</th>
+                        <th>一番恵比須</th>
+                        <th>二番恵比須</th>
+                        <th>三番恵比須</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 必要な行を自由に追加・編集してください -->
+                    <tr>
+                        <td>2024年</td>
+                        <td>氏名</td>
+                        <td>氏名</td>
+                        <td>氏名</td>
+                    </tr>
+                    <tr>
+                        <td>2023年</td>
+                        <td>氏名</td>
+                        <td>氏名</td>
+                        <td>氏名</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; サイト名 All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
