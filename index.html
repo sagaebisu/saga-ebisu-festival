@@ -509,7 +509,6 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
 /* ===== 歴代祭典委員アーカイブ ===== */
 .committee-history-section{background:#fff}
-.committee-history-intro{color:var(--muted);line-height:1.8;margin:0 0 18px}
 .history-tools{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:10px;margin:18px 0 16px}
 .history-tools input,.history-tools select{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;background:#fff;padding:11px 12px;font:inherit;color:var(--ink)}
 .history-status{font-size:12px;color:var(--muted);margin:0 0 12px}
@@ -1318,11 +1317,9 @@ footer small{display:block;margin-top:8px;opacity:.85}
     <div class="section-head">
       <div class="eyebrow">HISTORY OF THE FESTIVAL COMMITTEE</div>
       <h2>歴代祭典委員</h2>
-      <p>初代から第五十四代までの歴代祭典委員を掲載しています。名前・会社名・役職・元号などで検索できます。</p>
+      <p>初代から第五十四代までの歴代祭典委員をご紹介します。</p>
     </div>
-    <p class="committee-history-intro">大恵比須は写真も掲載しています。今後写真を追加する場合は、imageフォルダに「06.jpg」「07.jpg」のように代数に対応した写真を追加するだけで表示できます。</p>
     <div class="history-tools" aria-label="歴代祭典委員検索">
-      <input id="historySearch" type="search" placeholder="キーワードで検索（名前・会社名・役職・元号など）" aria-label="キーワード検索">
       <select id="historyGeneration" aria-label="代を選択">
         <option value="">空白</option>
         <option value="all">すべて</option>
@@ -1428,26 +1425,21 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
 <script>
 (function(){
-  const search=document.getElementById('historySearch'), generation=document.getElementById('historyGeneration'), list=document.getElementById('historyList'), status=document.getElementById('historyStatus');
-  if(!search||!generation||!list||!status)return;
+  const generation=document.getElementById('historyGeneration'), list=document.getElementById('historyList'), status=document.getElementById('historyStatus');
+  if(!generation||!list||!status)return;
   let records=[];
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const genNum=v=>{const s=String(v??''),m=s.match(/\d+/);if(m)return +m[0];if(s.includes('初代'))return 1;return null};
   const genLabel=n=>n===1?'初代':'第'+n+'代';
-  const displayGen=item=>item['恵比須']==='大恵比須' ? (item['代(漢字)']||item['代']) : item['代'];
+  const displayGen=item=>item['恵比須']==='大恵比須' ? ((item['代(漢字)']||item['代']) + (item['元号'] ? '（'+item['元号']+'）' : '')) : item['代'];
   const imageNo=item=>{const n=genNum(item['代']);return n>=1&&n<=54?String(n).padStart(2,'0'):''};
   function render(){
-    const q=search.value.trim().toLowerCase(), sel=generation.value;
-    if(!q&&!sel){list.innerHTML='';status.textContent='条件を選択・入力すると名簿が表示されます。';return}
+    const sel=generation.value;
+    if(!sel){list.innerHTML='';status.textContent='代を選択すると名簿が表示されます。';return}
     const filtered=records.filter(item=>{
       const n=genNum(item['代']);
-      if(sel&&sel!=='all'&&String(n)!==sel)return false;
-      if(q){
-        const text=[item['代'],item['代(漢字)'],item['元号'],item['西暦'],item['元号(漢字)'],item['恵比須'],item['名前'],item['会社名・団体名'],item['役職']].join(' ').toLowerCase();
-        if(!text.includes(q))return false;
-      }
-      return true;
-    }).sort((a,b)=>Number(a['Ｎｏ']||0)-Number(b['Ｎｏ']||0));
+      return sel==='all'||String(n)===sel;
+    }).sort((a,b)=>Number(a['Ｎｏ']||a['No']||0)-Number(b['Ｎｏ']||b['No']||0));
     if(!filtered.length){list.innerHTML='<div class="history-empty">該当する祭典委員が見つかりませんでした。</div>';status.textContent='該当件数 0件';return}
     const body=filtered.map(item=>{
       const d=item['恵比須']==='大恵比須', no=imageNo(item);
@@ -1470,7 +1462,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
     generation.innerHTML='<option value="">空白</option><option value="all">すべて</option>'+ns.map(n=>`<option value="${n}">${genLabel(n)}</option>`).join('');
     render();
   }).catch(()=>{status.textContent='名簿データを読み込めませんでした。'});
-  search.addEventListener('input',render);generation.addEventListener('change',render);
+  generation.addEventListener('change',render);
 })();
 </script>
 
