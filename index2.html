@@ -1,133 +1,323 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トップページ</title>
-    <style>
-        body {
-            font-family: "Helvetica Neue", Arial, "平城角ゴシック ProN", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        header, main, footer {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 8px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 15px;
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 4px;
-        }
-        nav a {
-            color: #0044cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .event-link {
-            display: inline-block;
-            margin: 15px 0;
-            padding: 10px 20px;
-            background-color: #0044cc;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .event-link:hover {
-            background-color: #002a80;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:nth-child(even) {
-            background-color: #fafafa;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>恵比須名簿</title>
+  <style>
+    :root {
+      --primary-color: #c41e3a;
+      --secondary-color: #d4af37;
+      --bg-color: #f9f8f6;
+      --text-color: #2b2b2b;
+      --border-color: #e0dcd3;
+      --table-header-bg: #8b0000;
+      --table-row-even: #fdfbf7;
+    }
+
+    body {
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 10px;
+    }
+
+    .event-section {
+      background-color: #fffdf8;
+      border: 1px solid var(--secondary-color);
+      padding: 20px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .event-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .event-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0056b3;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .search-section {
+      background-color: #f4f1ea;
+      padding: 20px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    label {
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    input[type="text"], select {
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    input[type="text"] {
+      width: 200px;
+    }
+
+    select {
+      min-width: 120px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px 10px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+      color: #ffffff;
+      font-weight: normal;
+      white-space: nowrap;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--table-row-even);
+    }
+
+    .ebisu-photo {
+      width: 60px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 1px solid var(--border-color);
+      display: block;
+      margin-top: 5px;
+    }
+
+    .badge-oebisu {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 30px;
+      color: #666666;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>サイトタイトル</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="event-fukuotoko.html">福男走の詳細</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="container">
+    <h1>歴代恵比須名簿</h1>
 
-    <main>
-        <section>
-            <h2>イベント案内</h2>
-            <p>イベントに関する案内テキストをここに入力してください。</p>
-            <!-- 福男走詳細ページへのリンク -->
-            <a href="event-fukuotoko.html" class="event-link">福男走の詳細はこちら</a>
-        </section>
+    <!-- イベント「福男走」スペース -->
+    <div class="event-section">
+      <div class="event-title">【イベント】福男走</div>
+      <p>福男走のイベント情報はこちらからご確認いただけます。</p>
+      <a href="event-fukuotoko.html" class="event-link">詳細はこちら</a>
+    </div>
 
-        <section>
-            <h2>歴代祭典委員（歴代恵比須）</h2>
-            <p>※ワード検索機能は使用せず、以下に全件表示しています。</p>
+    <!-- 検索セクション -->
+    <div class="search-section">
+      <div class="search-group">
+        <label for="keywordInput">キーワード検索:</label>
+        <input type="text" id="keywordInput" placeholder="名前・会社名など">
+      </div>
+      <div class="search-group">
+        <label for="daiSelect">代:</label>
+        <select id="daiSelect">
+          <option value=""></option>
+          <option value="すべて">すべて</option>
+          <!-- JavaScriptで選択肢を動的に生成 -->
+        </select>
+      </div>
+    </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>年</th>
-                        <th>一番恵比須</th>
-                        <th>二番恵比須</th>
-                        <th>三番恵比須</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 必要な行を自由に追加・編集してください -->
-                    <tr>
-                        <td>2024年</td>
-                        <td>氏名</td>
-                        <td>氏名</td>
-                        <td>氏名</td>
-                    </tr>
-                    <tr>
-                        <td>2023年</td>
-                        <td>氏名</td>
-                        <td>氏名</td>
-                        <td>氏名</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+    <!-- 検索結果テーブル -->
+    <div class="table-container">
+      <table id="resultTable">
+        <thead>
+          <tr>
+            <th>代</th>
+            <th>西暦</th>
+            <th>恵比須</th>
+            <th>名前</th>
+            <th>会社名・団体名</th>
+            <th>役職</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- JSで検索結果を動的表示 -->
+        </tbody>
+      </table>
+      <div id="noResults" class="no-results" style="display: none;">該当するデータが見つかりませんでした。</div>
+    </div>
+  </div>
 
-    <footer>
-        <p>&copy; サイト名 All Rights Reserved.</p>
-    </footer>
+  <script>
+    let ebisuData = [];
+
+    // 初期化およびデータ読み込み
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch('rekidai_ebisu_all.json')
+        .then(response => response.json())
+        .then(data => {
+          ebisuData = data;
+          initDaiDropdown();
+          // 初期状態では何も表示しない
+        })
+        .catch(error => console.error('データ取得エラー:', error));
+
+      document.getElementById('daiSelect').addEventListener('change', filterData);
+      document.getElementById('keywordInput').addEventListener('input', filterData);
+    });
+
+    // 「代」プルダウンの初期化
+    function initDaiDropdown() {
+      const select = document.getElementById('daiSelect');
+      const uniqueDais = [...new Set(ebisuData.map(item => item.dai))];
+      
+      // 代数順に並び替え（初代、第2代、第3代...）
+      uniqueDais.sort((a, b) => {
+        const numA = a === '初代' ? 1 : parseInt(a.replace(/[^0-9]/g, ''));
+        const numB = b === '初代' ? 1 : parseInt(b.replace(/[^0-9]/g, ''));
+        return numA - numB;
+      });
+
+      uniqueDais.forEach(dai => {
+        const option = document.createElement('option');
+        option.value = dai;
+        option.textContent = dai;
+        select.appendChild(option);
+      });
+    }
+
+    // データのフィルタリングと表示
+    function filterData() {
+      const selectedDai = document.getElementById('daiSelect').value;
+      const keyword = document.getElementById('keywordInput').value.trim().toLowerCase();
+      const tbody = document.getElementById('tableBody');
+      const noResults = document.getElementById('noResults');
+
+      tbody.innerHTML = '';
+
+      // プルダウンが空白、かつキーワードも未入力の場合は非表示
+      if (selectedDai === "" && keyword === "") {
+        noResults.style.display = 'none';
+        return;
+      }
+
+      let filtered = ebisuData;
+
+      // 「代」フィルタ
+      if (selectedDai !== "" && selectedDai !== "すべて") {
+        filtered = filtered.filter(item => item.dai === selectedDai);
+      }
+
+      // キーワードフィルタ（複数項目対象）
+      if (keyword !== "") {
+        filtered = filtered.filter(item => {
+          return (item.dai && item.dai.toLowerCase().includes(keyword)) ||
+                 (item.seireki && item.seireki.toString().includes(keyword)) ||
+                 (item.gengou && item.gengou.toLowerCase().includes(keyword)) ||
+                 (item.ebisu && item.ebisu.toLowerCase().includes(keyword)) ||
+                 (item.name && item.name.toLowerCase().includes(keyword)) ||
+                 (item.company && item.company.toLowerCase().includes(keyword)) ||
+                 (item.post && item.post.toLowerCase().includes(keyword));
+        });
+      }
+
+      // Noの昇順に並び替え
+      filtered.sort((a, b) => a.no - b.no);
+
+      if (filtered.length === 0) {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+        filtered.forEach(item => {
+          const tr = document.createElement('tr');
+
+          // 「代」の表示形式調整（大恵比須の場合のみ元号を付ける）
+          let daiDisplay = item.dai;
+          let photoHtml = '';
+
+          if (item.ebisu === "大恵比須") {
+            daiDisplay = `${item.dai}（${item.gengou}）`;
+            
+            // 数値抽出（初代 -> 01, 第2代 -> 02）
+            let num = item.dai === '初代' ? 1 : parseInt(item.dai.replace(/[^0-9]/g, ''));
+            let paddedNum = String(num).padStart(2, '0');
+            photoHtml = `<img src="image/${paddedNum}.jpg" alt="${item.dai} ${item.name}" class="ebisu-photo" onerror="this.style.display='none'">`;
+          }
+
+          const isOebisu = item.ebisu === "大恵比須" ? 'class="badge-oebisu"' : '';
+
+          tr.innerHTML = `
+            <td>${daiDisplay}${photoHtml}</td>
+            <td>${item.seireki}年</td>
+            <td ${isOebisu}>${item.ebisu}</td>
+            <td>${item.name}</td>
+            <td>${item.company}</td>
+            <td>${item.post}</td>
+          `;
+
+          tbody.appendChild(tr);
+        });
+      }
+    }
+  </script>
 
 </body>
 </html>
