@@ -133,6 +133,18 @@ header{
     repeating-linear-gradient(135deg,transparent 0 20px,rgba(126,155,89,.05) 21px 22px);
   pointer-events:none;
 }
+.hero:after{
+  content:"";
+  position:absolute;left:-5%;right:-5%;bottom:-70px;height:150px;
+  background:
+    radial-gradient(ellipse at 10% 60%,#d6bd6a 0 8%,transparent 8.5%),
+    radial-gradient(ellipse at 25% 50%,#fff 0 8%,transparent 8.5%),
+    radial-gradient(ellipse at 42% 60%,#c92025 0 7%,transparent 7.5%),
+    radial-gradient(ellipse at 58% 45%,#fff 0 8%,transparent 8.5%),
+    radial-gradient(ellipse at 76% 58%,#d6bd6a 0 8%,transparent 8.5%),
+    radial-gradient(ellipse at 92% 45%,#c92025 0 7%,transparent 7.5%);
+  opacity:.75;
+}
 .hero-grid{
   position:relative;z-index:2;
   display:grid;grid-template-columns:1.05fr .95fr;
@@ -156,6 +168,11 @@ header{
   max-height:540px;
   object-fit:contain;
   filter:drop-shadow(0 16px 18px rgba(50,35,15,.18));
+}
+.asset-note{
+  position:absolute;z-index:1;
+  color:#7d6b3d;font-size:12px;text-align:center;
+  width:70%;opacity:.0;
 }
 .hero-copy{padding:10px 0}
 .eyebrow{
@@ -273,6 +290,7 @@ header{
 .message-card .role{color:var(--muted);font-size:13px}
 .message-card h3{font-family:"Noto Serif JP",serif;font-size:27px;margin:2px 0 0}
 .message-card .message{white-space:pre-line;font-size:14px;line-height:2}
+.readmore{color:var(--red);font-weight:900;font-size:13px}
 
 .events{background:#fffdf7}
 .event-grid{
@@ -284,11 +302,19 @@ header{
   transition:.2s transform;
 }
 .event-card:hover{transform:translateY(-4px)}
-.event-photo{aspect-ratio:4/3;background:#eee7cc;overflow:hidden;position:relative;}
-.event-photo img{width:100%;height:100%;object-fit:cover}.event-photo img.pos-center{object-position:center}
+.event-photo{aspect-ratio:4/3;background:#eee7cc;overflow:hidden}
+.event-photo img{width:100%;height:100%;object-fit:cover}.event-photo img.pos-top{object-position:center top}.event-photo img.pos-center{object-position:center}.event-photo img.pos-bottom{object-position:center bottom}
 .event-body{padding:18px}
 .event-body h3{font-family:"Noto Serif JP",serif;font-size:18px;margin:0 0 5px;color:var(--red)}
 .event-body p{font-size:12px;color:var(--muted);margin:0}
+.event-detail-link{display:inline-block;margin-top:10px;color:var(--red);font-size:12px;font-weight:900}.event-detail-link:hover{text-decoration:underline}
+.photo-coming{
+  height:100%;display:grid;place-items:center;
+  color:#8a7d59;font-size:12px;
+  background:
+    linear-gradient(135deg,rgba(126,155,89,.13),rgba(201,154,50,.10)),
+    repeating-linear-gradient(45deg,transparent 0 12px,rgba(201,32,37,.05) 13px 14px);
+}
 .event-more{
   display:flex;align-items:center;justify-content:center;
   min-height:100%;font-family:"Noto Serif JP",serif;font-size:18px;color:var(--red);
@@ -312,7 +338,6 @@ header{
 .news-list li{padding:13px 0;border-bottom:1px solid #eee3c5}
 .news-list li:last-child{border-bottom:0}
 .news-list time{font-size:12px;color:var(--muted);margin-right:12px}
-.news-list a{color:inherit;text-decoration:none}.news-list a:hover{text-decoration:underline}
 
 .notice{
   margin-top:30px;padding:24px;border:1px dashed var(--gold);
@@ -384,6 +409,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
   line-height:1.7;
   text-align:center;
 }
+.event-card .event-photo{position:relative;}
 
 /* ===== 祭典委員紹介 ===== */
 .committee-section{
@@ -479,6 +505,32 @@ footer small{display:block;margin-top:8px;opacity:.85}
   .committee-company{font-size:10px}
 }
 
+
+
+/* ===== 歴代祭典委員アーカイブ ===== */
+.committee-history-section{background:#fff}
+.committee-history-intro{color:var(--muted);line-height:1.8;margin:0 0 18px}
+.history-tools{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:10px;margin:18px 0 16px}
+.history-tools input,.history-tools select{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;background:#fff;padding:11px 12px;font:inherit;color:var(--ink)}
+.history-status{font-size:12px;color:var(--muted);margin:0 0 12px}
+.history-table-wrap{overflow-x:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.history-table{width:100%;min-width:980px;border-collapse:collapse;font-size:12px;line-height:1.55}
+.history-table th{background:#f8f3e4;color:#6d5b2e;font-weight:800;text-align:left;padding:10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+.history-table td{padding:9px;border-bottom:1px solid #eee;vertical-align:middle}
+.history-table tbody tr:nth-child(even){background:#fffdf8}
+.history-table tbody tr.is-daiebisu{background:#fffaf0}
+.history-table .generation{font-weight:800;color:#6d5b2e;white-space:nowrap}
+.history-table .year{white-space:nowrap;color:var(--muted)}
+.history-table .role{white-space:nowrap}
+.history-table .name{font-family:"Noto Serif JP",serif;font-weight:900;font-size:14px;white-space:nowrap}
+.history-table .company{min-width:210px}
+.history-table .title{min-width:170px}
+.history-name-cell{display:flex;align-items:center;gap:9px}
+.history-daiebisu-photo{width:54px;height:68px;object-fit:cover;border-radius:6px;display:block;flex:0 0 auto;background:#eee}
+.history-daiebisu-photo.is-missing{display:none}
+.history-empty{padding:28px 12px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line)}
+.history-jump{display:inline-block;margin:0 0 20px;padding:9px 16px;border-radius:999px;background:var(--red);color:#fff;text-decoration:none;font-weight:800}
+@media(max-width:700px){.history-tools{grid-template-columns:1fr}.history-table{min-width:900px;font-size:11px}.history-table th,.history-table td{padding:8px 7px}}
 /* ===== 佐賀恵比須会 ===== */
 .saga-ebisu-section{background:linear-gradient(180deg,#fffdf6 0%,#f8f3e4 100%)}
 .saga-ebisu-block{margin-top:36px}
@@ -489,73 +541,17 @@ footer small{display:block;margin-top:8px;opacity:.85}
 .name-list span{display:block;color:var(--muted);font-size:11px;margin-bottom:2px}
 .name-list strong{display:block;font-family:"Noto Serif JP",serif;font-weight:900;line-height:1.45}
 .name-list small{display:block;color:var(--muted);font-size:10px;line-height:1.55;margin-top:3px;font-weight:500}
+.saga-ebisu-note{margin:20px 0 0;text-align:right;color:var(--muted);font-size:11px}
+
 .officer-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .officer-group h4{margin:0 0 9px;color:#6d5b2e;font-family:"Noto Serif JP",serif;font-size:18px}
 @media(max-width:620px){.name-list{grid-template-columns:repeat(2,1fr);gap:8px}.name-list>div{padding:10px 7px;font-size:14px}.officer-groups{grid-template-columns:1fr;gap:18px}.saga-ebisu-title{font-size:21px}}
+.news-list a{color:inherit;text-decoration:none}.news-list a:hover{text-decoration:underline}
+/* お知らせ：日付の幅を揃えて本文の頭を統一 */
+.news-list li{display:flex;align-items:baseline;gap:0}
+.news-list li time{display:inline-block;width:76px;flex:0 0 76px;margin-right:12px}
+.news-list li a{flex:1}
 
-/* ===== 歴代祭典委員（和風名簿テーブルスタイル） ===== */
-.archive-section{background:linear-gradient(180deg,#fffdf6 0%,#f8f3e4 100%);border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light)}
-.archive-search{
-  display:grid;grid-template-columns:1fr 220px auto;gap:12px;align-items:end;
-  max-width:900px;margin:0 auto;padding:22px;background:#fff;border:1px solid var(--line);
-  border-radius:16px;box-shadow:var(--shadow)
-}
-.archive-field label{display:block;margin-bottom:6px;color:var(--red);font-size:12px;font-weight:900}
-.archive-field input,.archive-field select{
-  width:100%;height:46px;padding:8px 12px;border:1px solid #d8cba7;border-radius:9px;
-  background:#fffdf8;color:var(--ink);font-size:14px;
-}
-.archive-search-btn{
-  height:46px;border:0;border-radius:999px;padding:0 32px;
-  background:var(--red);color:#fff;font-weight:900;cursor:pointer;
-  transition:.2s background;
-}
-.archive-search-btn:hover{background:var(--red-dark)}
-.archive-hint{max-width:900px;margin:12px auto 0;color:var(--muted);font-size:12px;text-align:center}
-.archive-results{max-width:1000px;margin:28px auto 0}
-.archive-empty{padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--gold);border-radius:12px}
-.archive-count-summary{margin-bottom:12px;font-weight:800;color:var(--red-dark);font-size:14px}
-
-/* 名簿テーブル */
-.archive-table-wrap{
-  background:#fff;border:1px solid var(--line);border-radius:12px;
-  overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.04);
-}
-.archive-table{width:100%;border-collapse:collapse;text-align:left;font-size:14px}
-.archive-table th{
-  background:#f7f2e4;color:var(--red-dark);font-family:"Noto Serif JP",serif;
-  font-weight:900;padding:12px 16px;border-bottom:2px solid var(--line);
-  white-space:nowrap;
-}
-.archive-table td{padding:12px 16px;border-bottom:1px solid #efe6d0;vertical-align:middle}
-.archive-table tr:last-child td{border-bottom:0}
-.archive-table tr:nth-child(even){background:#fffdf9}
-.archive-table tr.is-daiebisu{background:#fffaf0;border-left:4px solid var(--gold)}
-.archive-table .col-gen{font-weight:900;color:var(--red);white-space:nowrap;width:130px}
-.archive-table .col-name{font-family:"Noto Serif JP",serif;font-weight:900;font-size:16px;width:180px}
-.archive-table .col-role{font-weight:800;font-size:12px;color:var(--muted);width:100px;text-align:center}
-.archive-table .role-badge{display:inline-block;padding:2px 8px;border-radius:4px;background:#f2ebd9;color:#5a4f36}
-.archive-table .role-badge.daiebisu{background:var(--red);color:#fff}
-.archive-daiebisu-thumb{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-right:10px;vertical-align:middle;display:inline-block}
-
-@media(max-width:768px){
-  .archive-search{grid-template-columns:1fr;padding:16px}
-  .archive-search-btn{width:100%}
-  /* スマホ版：見やすい行型リスト表示へ変換 */
-  .archive-table-wrap{border:0;background:transparent;box-shadow:none}
-  .archive-table,.archive-table tbody,.archive-table tr,.archive-table td{display:block;width:100%}
-  .archive-table thead{display:none}
-  .archive-table tr{
-    background:#fff;border:1px solid var(--line);border-radius:12px;
-    padding:14px;margin-bottom:10px;box-shadow:0 3px 10px rgba(0,0,0,.03);
-  }
-  .archive-table tr.is-daiebisu{border-left:5px solid var(--gold);background:#fffdf5}
-  .archive-table td{padding:2px 0;border:0}
-  .archive-table .col-gen{font-size:12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-  .archive-table .col-name{font-size:18px;margin-bottom:4px}
-  .archive-table .col-company,.archive-table .col-title{font-size:12px;color:var(--muted)}
-  .archive-table .col-role{text-align:left;margin-top:6px}
-}
 </style>
 </head>
 
@@ -576,7 +572,6 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
       <a href="#saga-ebisu">佐賀恵比須会</a>
-      <a href="#rekidai-committee">歴代祭典委員</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
     </nav>
@@ -593,7 +588,6 @@ footer small{display:block;margin-top:8px;opacity:.85}
       <a href="#message">御挨拶</a>
       <a href="#committee">祭典委員</a>
       <a href="#saga-ebisu">佐賀恵比須会</a>
-      <a href="#rekidai-committee">歴代祭典委員</a>
       <a href="#access">アクセス</a>
       <a href="#news">お知らせ</a>
       <a class="facebook-link" href="https://www.facebook.com/sagaebisukai"
@@ -606,18 +600,22 @@ footer small{display:block;margin-top:8px;opacity:.85}
 
 <section class="hero">
   <div class="wrap hero-grid">
+
     <div class="hero-art">
+      <!-- パンフレットから切り出した大恵比須イラストを assets/daiebisu.png として配置 -->
       <img src="assets/daiebisu.png" alt="第五十五代 大恵比須 宮地大治">
     </div>
 
     <div class="hero-copy">
       <div class="eyebrow">SAGA TOKA EBISU GRAND FESTIVAL</div>
+
       <h1 class="catch">
         <span class="line1">「エイ・エイ・エイ・オー!」で</span>
         <span class="line2">佐賀の福をアップデート!!</span>
         <span class="mark">――――――――</span>
       </h1>
 
+      <!-- パンフレットの「十日恵比須大祭」ロゴを assets/ebisu-logo.png として配置 -->
       <img class="hero-logo" src="assets/ebisu-logo.png" alt="佐賀十日恵比須大祭">
 
       <div class="hero-date">
@@ -631,6 +629,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
         <span>〒840-0047 佐賀県佐賀市与賀町2-50</span>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -655,6 +654,7 @@ footer small{display:block;margin-top:8px;opacity:.85}
     </div>
 
     <div class="intro-photo">
+      <!-- 福餅投げ写真。メイン写真ではなくイベント紹介用 -->
       <img src="assets/hero-mochi.jpg" alt="福餅投げの様子">
     </div>
   </div>
@@ -716,14 +716,16 @@ footer small{display:block;margin-top:8px;opacity:.85}
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">EVENT</div>
-      <h2>福を呼ぶ、楽しい二日間。</h2>
-      <p class="ai-note">※掲載画像は、生成AIを用いて作成したイメージです。実際の会場・催事の様子とは異なります。</p>
+      <h2>福を呼ぶ、楽しい二日間。</h2><p class="ai-note">※掲載画像は、生成AIを用いて作成したイメージです。実際の会場・催事の様子とは異なります。</p>
+
       <p>令和9年の佐賀十日恵比須大祭では、さまざまな催しを予定しています。</p>
     </div>
 
     <div class="event-grid">
+
       <article class="event-card">
-        <div class="event-photo"><img src="assets/hero-mochi.jpg" alt="福餅投げ"></div>
+        <div class="event-photo"><img src="assets/hero-mochi.jpg" alt="福餅投げ">
+        </div>
         <div class="event-body">
           <h3>福餅投げ</h3>
           <p>みんなで楽しめる恒例行事。福をたくさん受け取りましょう！</p>
@@ -731,7 +733,8 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
 
       <article class="event-card">
-        <div class="event-photo"><img src="assets/ebisu-lottery.jpg" alt="えびす大抽選会" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/ebisu-lottery.jpg" alt="えびす大抽選会" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>えびす大抽選会</h3>
           <p>豪華景品が当たるチャンス！ぜひご参加ください。</p>
@@ -739,26 +742,30 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
 
       <article class="event-card">
-        <div class="event-photo"><img src="assets/fukuo-race.jpg" alt="開運！福男走!!" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/fukuo-race.jpg" alt="開運！福男走!!" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>開運！福男走!!</h3>
           <p>新春の健脚行事。今年の福男は誰だ！</p>
-<a href="event-fukuotoko.html">福男走の詳細はこちら</a>
+          <a class="event-detail-link" href="event-fukuotoko.html">詳細はこちら</a>
         </div>
       </article>
 
       <article class="event-card">
-        <div class="event-photo"><img src="assets/nodojiman.png" alt="企業対抗のど自慢大会" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/nodojiman.png" alt="企業対抗のど自慢大会" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>企業対抗のど自慢大会</h3>
           <p>自慢の歌声を披露しませんか？</p>
         </div>
       </article>
+
     </div>
 
     <div class="event-grid" style="margin-top:18px">
       <article class="event-card">
-        <div class="event-photo"><img src="assets/fukuzasa.jpg" alt="福笹販売" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/fukuzasa.jpg" alt="福笹販売" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>福笹販売</h3>
           <p>新しい年の福を招く福笹をお求めいただけます。</p>
@@ -766,7 +773,8 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
 
       <article class="event-card">
-        <div class="event-photo"><img src="assets/engi-mono.jpg" alt="縁起物販売" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/engi-mono.jpg" alt="縁起物販売" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>縁起物販売</h3>
           <p>新しい年の福をお迎えする縁起物を販売します。</p>
@@ -774,7 +782,8 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
 
       <article class="event-card">
-        <div class="event-photo"><img src="assets/kofuda.jpg" alt="古札預かり" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/kofuda.jpg" alt="古札預かり" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>古札預かり</h3>
           <p>古いお札やお守りをお預かりします。</p>
@@ -782,7 +791,8 @@ footer small{display:block;margin-top:8px;opacity:.85}
       </article>
 
       <article class="event-card">
-        <div class="event-photo"><img src="assets/sketch.jpg" alt="えびすスケッチ大会" class="pos-center" loading="lazy"></div>
+        <div class="event-photo"><img src="assets/sketch.jpg" alt="えびすスケッチ大会" class="pos-center" loading="lazy">
+        </div>
         <div class="event-body">
           <h3>えびすスケッチ大会</h3>
           <p>恵比須様を楽しく描いてみよう！</p>
@@ -797,10 +807,11 @@ footer small{display:block;margin-top:8px;opacity:.85}
     </div>
 
     <div class="notice">
-      ※ステージ参加者・タイムテーブル等は決定次第ご案内します。
+      
     </div>
   </div>
 </section>
+
 
 <section class="section committee-section" id="committee">
   <div class="wrap">
@@ -820,230 +831,505 @@ footer small{display:block;margin-top:8px;opacity:.85}
     <div class="committee-group committee-group-daiebisu">
       <h3 class="committee-group-title"><span>大恵比須</span><small>1名</small></h3>
       <div class="committee-feature">
-        <article class="committee-card committee-大恵比須">
-          <div class="committee-photo-wrap">
-            <img src="assets/committee/01_宮地大治.jpg" alt="大恵比須 宮地大治" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-            <div class="committee-photo-placeholder">写真準備中</div>
-          </div>
-          <div class="committee-body">
-            <div class="committee-role">大恵比須</div>
-            <div class="committee-name">宮地大治</div>
-            <div class="committee-company">SDCソリューションズ 株式会社<br>代表取締役社長</div>
-          </div>
-        </article>
+        
+      <article class="committee-card committee-大恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/01_宮地大治.jpg" alt="大恵比須 宮地大治" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">大恵比須</div>
+          <div class="committee-name">宮地大治</div>
+          <div class="committee-company">SDCソリューションズ 株式会社<br>代表取締役社長</div>
+        </div>
+      </article>
       </div>
     </div>
 
     <div class="committee-group">
       <h3 class="committee-group-title"><span>福恵比須</span><small>3名</small></h3>
       <div class="committee-grid committee-grid-fuku">
-        <article class="committee-card committee-福恵比須">
-          <div class="committee-photo-wrap">
-            <img src="assets/committee/02_大曲雷太.jpg" alt="福恵比須 大曲雷太" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-            <div class="committee-photo-placeholder">写真準備中</div>
-          </div>
-          <div class="committee-body">
-            <div class="committee-role">福恵比須</div>
-            <div class="committee-name">大曲雷太</div>
-            <div class="committee-company">株式会社 永池<br>専務取締役</div>
-          </div>
-        </article>
-        <article class="committee-card committee-福恵比須">
-          <div class="committee-photo-wrap">
-            <img src="assets/committee/03_嘉村大輔.jpg" alt="福恵比須 嘉村大輔" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-            <div class="committee-photo-placeholder">写真準備中</div>
-          </div>
-          <div class="committee-body">
-            <div class="committee-role">福恵比須</div>
-            <div class="committee-name">嘉村大輔</div>
-            <div class="committee-company">松尾建設 株式会社<br>執行役員 佐賀支店長</div>
-          </div>
-        </article>
-        <article class="committee-card committee-福恵比須">
-          <div class="committee-photo-wrap">
-            <img src="assets/committee/04_一ノ瀬裕子.jpg" alt="福恵比須 一ノ瀬裕子" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-            <div class="committee-photo-placeholder">写真準備中</div>
-          </div>
-          <div class="committee-body">
-            <div class="committee-role">福恵比須</div>
-            <div class="committee-name">一ノ瀬裕子</div>
-            <div class="committee-company">佐賀県議会<br>議員</div>
-          </div>
-        </article>
+        
+      <article class="committee-card committee-福恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/02_大曲雷太.jpg" alt="福恵比須 大曲雷太" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">福恵比須</div>
+          <div class="committee-name">大曲雷太</div>
+          <div class="committee-company">株式会社 永池<br>専務取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-福恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/03_嘉村大輔.jpg" alt="福恵比須 嘉村大輔" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">福恵比須</div>
+          <div class="committee-name">嘉村大輔</div>
+          <div class="committee-company">松尾建設 株式会社<br>執行役員 佐賀支店長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-福恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/04_一ノ瀬裕子.jpg" alt="福恵比須 一ノ瀬裕子" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">福恵比須</div>
+          <div class="committee-name">一ノ瀬裕子</div>
+          <div class="committee-company">佐賀県議会<br>議員</div>
+        </div>
+      </article>
       </div>
     </div>
 
     <div class="committee-group">
       <h3 class="committee-group-title"><span>小恵比須</span><small>50音順・34名</small></h3>
       <div class="committee-grid committee-grid-small">
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/05_荒尾淳太.jpg" alt="小恵比須 荒尾淳太" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">荒尾淳太</div><div class="committee-company">あらお花店<br>専務取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/06_入江修司.jpg" alt="小恵比須 入江修司" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">入江修司</div><div class="committee-company">有限会社ＡＲＫ<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/07_岩本翼.jpg" alt="小恵比須 岩本翼" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">岩本翼</div><div class="committee-company">株式会社 佐賀バルーナーズ<br>営業マネージャー</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/08_江口宏彰.jpg" alt="小恵比須 江口宏彰" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">江口宏彰</div><div class="committee-company">有限会社 江口建設<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/09_大坪兼士.jpg" alt="小恵比須 大坪兼士" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">大坪兼士</div><div class="committee-company">大坪製菓 株式会社<br>専務取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/10_音成亜美.jpg" alt="小恵比須 音成亜美" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">音成亜美</div><div class="committee-company">旅館あけぼの<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/11_柿本泰志.jpg" alt="小恵比須 柿本泰志" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">柿本泰志</div><div class="committee-company">佐賀東信用組合<br>本店営業部長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/12_川代聖人.jpg" alt="小恵比須 川代聖人" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">川代聖人</div><div class="committee-company">有限会社 川代テント工業<br>製造事業部部長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/13_北川祐介.jpg" alt="小恵比須 北川祐介" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">北川祐介</div><div class="committee-company">小城重機建設 株式会社<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/14_木下直哉.jpg" alt="小恵比須 木下直哉" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">木下直哉</div><div class="committee-company">西部印刷企画 株式会社<br>専務取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/15_古賀俊夫.jpg" alt="小恵比須 古賀俊夫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">古賀俊夫</div><div class="committee-company">株式会社 クーイング<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/16_古賀宏.jpg" alt="小恵比須 古賀宏" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">古賀宏</div><div class="committee-company">株式会社 全日警<br>営業開発部 営業課</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/17_小松佳城.jpg" alt="小恵比須 小松佳城" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">小松佳城</div><div class="committee-company">小松商店金属部</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/18_小山淳也.jpg" alt="小恵比須 小山淳也" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">小山淳也</div><div class="committee-company">有限会社ジョイックスシステム・有限会社ジョイックス交通<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/19_小山千恵.jpg" alt="小恵比須 小山千恵" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">小山千恵</div><div class="committee-company">Very Very（ベリーベリー）<br>代表</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/20_志村一郎.jpg" alt="小恵比須 志村一郎" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">志村一郎</div><div class="committee-company">佐賀ガス 株式会社<br>代表取締役社長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/21_新隼人.jpg" alt="小恵比須 新隼人" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">新隼人</div><div class="committee-company">野村證券 株式会社<br>佐賀支店長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/22_田畠栄太郎.jpg" alt="小恵比須 田畠栄太郎" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">田畠栄太郎</div><div class="committee-company">株式会社 美穂野<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/23_椿知晃.jpg" alt="小恵比須 椿知晃" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">椿知晃</div><div class="committee-company">株式会社 佐電工<br>本店営業部 営業課 課長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/24_寺井啓人.jpg" alt="小恵比須 寺井啓人" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">寺井啓人</div><div class="committee-company">佐賀県ヤクルト販売 株式会社<br>代表取締役社長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/25_鳥屋伊織.jpg" alt="小恵比須 鳥屋伊織" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">鳥屋伊織</div><div class="committee-company">株式会社 ロジコム<br>総務部マネージャー</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/26_中村悦久.jpg" alt="小恵比須 中村悦久" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">中村悦久</div><div class="committee-company">中島商事 株式会社<br>営業部次長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/27_西川博.jpg" alt="小恵比須 西川博" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">西川博</div><div class="committee-company">佐賀銀行<br>本店営業部 副部長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/28_西村祐二郎.jpg" alt="小恵比須 西村祐二郎" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">西村祐二郎</div><div class="committee-company">創作居酒屋カミーノ<br>代表</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/29_原田英樹.jpg" alt="小恵比須 原田英樹" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">原田英樹</div><div class="committee-company">株式会社 原田鉄工<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/30_菱岡茜.jpg" alt="小恵比須 菱岡茜" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">菱岡茜</div><div class="committee-company">楊柳亭</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/31_福岡桂大.jpg" alt="小恵比須 福岡桂大" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">福岡桂大</div><div class="committee-company">株式会社 福岡商店</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/32_古舘勇三.jpg" alt="小恵比須 古舘勇三" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">古舘勇三</div><div class="committee-company">有限会社 やかた商事<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/33_益田裕司.jpg" alt="小恵比須 益田裕司" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">益田裕司</div><div class="committee-company">株式会社 昭和メンテナンス<br>代表取締役</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/34_森武秀樹.jpg" alt="小恵比須 森武秀樹" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">森武秀樹</div><div class="committee-company">佐賀商工会議所<br>総務部 副部長兼経理課長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/35_山浦聖弥.jpg" alt="小恵比須 山浦聖弥" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">山浦聖弥</div><div class="committee-company">株式会社 エンターアイ<br>営業一課 課長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/36_山本光一郎.jpg" alt="小恵比須 山本光一郎" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">山本光一郎</div><div class="committee-company">有限会社 天山環境開発工業<br>営業課長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/37_吉冨明子.jpg" alt="小恵比須 吉冨明子" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">吉冨明子</div><div class="committee-company">株式会社 佐賀新聞サービス<br>管理部部長兼経理課課長</div></div></article>
-        <article class="committee-card committee-小恵比須"><div class="committee-photo-wrap"><img src="assets/committee/38_吉富大介.jpg" alt="小恵比須 吉富大介" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"><div class="committee-photo-placeholder">写真準備中</div></div><div class="committee-body"><div class="committee-role">小恵比須</div><div class="committee-name">吉富大介</div><div class="committee-company">株式会社 バッテン<br>代表取締役</div></div></article>
+        
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/05_荒尾淳太.jpg" alt="小恵比須 荒尾淳太" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">荒尾淳太</div>
+          <div class="committee-company">あらお花店<br>専務取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/06_入江修司.jpg" alt="小恵比須 入江修司" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">入江修司</div>
+          <div class="committee-company">有限会社ＡＲＫ<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/07_岩本翼.jpg" alt="小恵比須 岩本翼" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">岩本翼</div>
+          <div class="committee-company">株式会社 佐賀バルーナーズ<br>営業マネージャー</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/08_江口宏彰.jpg" alt="小恵比須 江口宏彰" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">江口宏彰</div>
+          <div class="committee-company">有限会社 江口建設<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/09_大坪兼士.jpg" alt="小恵比須 大坪兼士" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">大坪兼士</div>
+          <div class="committee-company">大坪製菓 株式会社<br>専務取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/10_音成亜美.jpg" alt="小恵比須 音成亜美" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">音成亜美</div>
+          <div class="committee-company">旅館あけぼの<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/11_柿本泰志.jpg" alt="小恵比須 柿本泰志" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">柿本泰志</div>
+          <div class="committee-company">佐賀東信用組合<br>本店営業部長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/12_川代聖人.jpg" alt="小恵比須 川代聖人" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">川代聖人</div>
+          <div class="committee-company">有限会社 川代テント工業<br>製造事業部部長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/13_北川祐介.jpg" alt="小恵比須 北川祐介" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">北川祐介</div>
+          <div class="committee-company">小城重機建設 株式会社<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/14_木下直哉.jpg" alt="小恵比須 木下直哉" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">木下直哉</div>
+          <div class="committee-company">西部印刷企画 株式会社<br>専務取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/15_古賀俊夫.jpg" alt="小恵比須 古賀俊夫" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">古賀俊夫</div>
+          <div class="committee-company">株式会社 クーイング<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/16_古賀宏.jpg" alt="小恵比須 古賀宏" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">古賀宏</div>
+          <div class="committee-company">株式会社 全日警<br>営業開発部　営業課</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/17_小松佳城.jpg" alt="小恵比須 小松佳城" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">小松佳城</div>
+          <div class="committee-company">小松商店金属部</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/18_小山淳也.jpg" alt="小恵比須 小山淳也" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">小山淳也</div>
+          <div class="committee-company">有限会社ジョイックスシステム・有限会社ジョイックス交通<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/19_小山千恵.jpg" alt="小恵比須 小山千恵" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">小山千恵</div>
+          <div class="committee-company">Very Very（ベリーベリー）<br>代表</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/20_志村一郎.jpg" alt="小恵比須 志村一郎" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">志村一郎</div>
+          <div class="committee-company">佐賀ガス 株式会社<br>代表取締役社長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/21_新隼人.jpg" alt="小恵比須 新隼人" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">新隼人</div>
+          <div class="committee-company">野村證券 株式会社<br>佐賀支店長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/22_田畠栄太郎.jpg" alt="小恵比須 田畠栄太郎" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">田畠栄太郎</div>
+          <div class="committee-company">株式会社 美穂野<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/23_椿知晃.jpg" alt="小恵比須 椿知晃" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">椿知晃</div>
+          <div class="committee-company">株式会社 佐電工<br>本店営業部　営業課　課長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/24_寺井啓人.jpg" alt="小恵比須 寺井啓人" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">寺井啓人</div>
+          <div class="committee-company">佐賀県ヤクルト販売 株式会社<br>代表取締役社長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/25_鳥屋伊織.jpg" alt="小恵比須 鳥屋伊織" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">鳥屋伊織</div>
+          <div class="committee-company">株式会社 ロジコム<br>総務部マネージャー</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/26_中村悦久.jpg" alt="小恵比須 中村悦久" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">中村悦久</div>
+          <div class="committee-company">中島商事 株式会社<br>営業部次長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/27_西川博.jpg" alt="小恵比須 西川博" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">西川博</div>
+          <div class="committee-company">佐賀銀行<br>本店営業部 副部長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/28_西村祐二郎.jpg" alt="小恵比須 西村祐二郎" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">西村祐二郎</div>
+          <div class="committee-company">創作居酒屋カミーノ<br>代表</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/29_原田英樹.jpg" alt="小恵比須 原田英樹" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">原田英樹</div>
+          <div class="committee-company">株式会社 原田鉄工<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/30_菱岡茜.jpg" alt="小恵比須 菱岡茜" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">菱岡茜</div>
+          <div class="committee-company">楊柳亭</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/31_福岡桂大.jpg" alt="小恵比須 福岡桂大" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">福岡桂大</div>
+          <div class="committee-company">株式会社 福岡商店</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/32_古舘勇三.jpg" alt="小恵比須 古舘勇三" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">古舘勇三</div>
+          <div class="committee-company">有限会社 やかた商事<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/33_益田裕司.jpg" alt="小恵比須 益田裕司" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">益田裕司</div>
+          <div class="committee-company">株式会社 昭和メンテナンス<br>代表取締役</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/34_森武秀樹.jpg" alt="小恵比須 森武秀樹" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">森武秀樹</div>
+          <div class="committee-company">佐賀商工会議所<br>総務部　副部長兼経理課長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/35_山浦聖弥.jpg" alt="小恵比須 山浦聖弥" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">山浦聖弥</div>
+          <div class="committee-company">株式会社 エンターアイ<br>営業一課　課長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/36_山本光一郎.jpg" alt="小恵比須 山本光一郎" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">山本光一郎</div>
+          <div class="committee-company">有限会社 天山環境開発工業<br>営業課長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/37_吉冨明子.jpg" alt="小恵比須 吉冨明子" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">吉冨明子</div>
+          <div class="committee-company">株式会社 佐賀新聞サービス<br>管理部部長兼経理課課長</div>
+        </div>
+      </article>
+      <article class="committee-card committee-小恵比須">
+        <div class="committee-photo-wrap">
+          <img src="assets/committee/38_吉富大介.jpg" alt="小恵比須 吉富大介" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <div class="committee-photo-placeholder">写真準備中</div>
+        </div>
+        <div class="committee-body">
+          <div class="committee-role">小恵比須</div>
+          <div class="committee-name">吉富大介</div>
+          <div class="committee-company">株式会社 バッテン<br>代表取締役</div>
+        </div>
+      </article>
       </div>
     </div>
   </div>
-</section>
-
-<section class="section saga-ebisu-section" id="saga-ebisu">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">SAGA EBISU KAI</div>
-      <h2>佐賀恵比須会</h2>
-      <p>祭典委員の下に、佐賀恵比須会の歴代名誉会長・歴代会長と令和8年度役員をご紹介します。</p>
-    </div>
-
-    <div class="saga-ebisu-block">
-      <h3 class="saga-ebisu-title">歴代名誉会長</h3>
-      <p class="saga-ebisu-history-note">※会社名・役職名は当時のものです</p>
-      <div class="name-list">
-        <div><span>初代</span><strong>香月 義人</strong><small>株式会社佐賀銀行 会長</small></div>
-        <div><span>二代</span><strong>鵜池 四郎</strong><small>理研農産加工株式会社 会長</small></div>
-        <div><span>三代</span><strong>西村 正俊</strong><small>&nbsp;</small></div>
-        <div><span>四代</span><strong>香月 孝</strong><small>株式会社北島 代表取締役会長</small></div>
-        <div><span>五代</span><strong>竹下 敏昭</strong><small>竹下製菓株式会社 代表取締役会長</small></div>
-        <div><span>六代</span><strong>円田 稔</strong><small>西九州マツダ株式会社 名誉会長</small></div>
-      </div>
-    </div>
-
-    <div class="saga-ebisu-block">
-      <h3 class="saga-ebisu-title">歴代会長</h3>
-      <p class="saga-ebisu-history-note">※会社名・役職名は当時のものです</p>
-      <div class="name-list">
-        <div><span>初代</span><strong>原 伊八</strong><small>原商店 社長</small></div>
-        <div><span>二代</span><strong>西村 徳久治</strong><small>株式会社桃太郎 会長</small></div>
-        <div><span>三代</span><strong>北島 常一</strong><small>株式会社北島商店 会長</small></div>
-        <div><span>四代</span><strong>鵜池 四郎</strong><small>理研農産加工株式会社 会長</small></div>
-        <div><span>五代</span><strong>伊藤 仁七</strong><small>伊藤時計 会長</small></div>
-        <div><span>六代</span><strong>香月 孝</strong><small>株式会社北島 代表取締役会長</small></div>
-        <div><span>七代</span><strong>竹下 敏昭</strong><small>竹下製菓株式会社 代表取締役会長</small></div>
-        <div><span>八代</span><strong>円田 稔</strong><small>西九州マツダ株式会社 名誉会長</small></div>
-        <div><span>九代</span><strong>福岡 桂</strong><small>福岡商店株式会社 代表取締役社長（当代）</small></div>
-      </div>
-    </div>
-
-    <div class="saga-ebisu-block">
-      <h3 class="saga-ebisu-title">令和8年度 佐賀恵比須会 役員メンバー</h3>
-      <div class="officer-groups">
-        <div class="officer-group">
-          <h4>名誉会長</h4>
-          <div class="name-list">
-            <div><strong>円田 稔</strong><small>株式会社 西九州マツダ 名誉会長</small></div>
-          </div>
-        </div>
-        <div class="officer-group">
-          <h4>会長</h4>
-          <div class="name-list">
-            <div><strong>福岡 桂</strong><small>株式会社 福岡商店 代表取締役社長</small></div>
-          </div>
-        </div>
-        <div class="officer-group">
-          <h4>副会長</h4>
-          <div class="name-list">
-            <div><strong>本島 直幸</strong><small>株式会社 モトシマ 代表取締役会長</small></div>
-            <div><strong>永田 はる奈</strong><small>佐賀富士ベンディング株式会社 代表取締役</small></div>
-            <div><strong>川代 勇一</strong><small>有限会社 川代テント工業 代表取締役社長</small></div>
-          </div>
-        </div>
-        <div class="officer-group">
-          <h4>監事</h4>
-          <div class="name-list">
-            <div><strong>吉田 康治</strong><small>株式会社 SANKYO.GEM 取締役会長</small></div>
-            <div><strong>岸川 正人</strong><small>合名会社 楊柳亭 社長</small></div>
-          </div>
-        </div>
-        <div class="officer-group">
-          <h4>理事</h4>
-          <div class="name-list">
-            <div><strong>牛島 征四郎</strong><small>株式会社 佐賀タクシー 代表取締役会長</small></div>
-            <div><strong>宮地 敏昭</strong><small>株式会社 ぷらざ 会長</small></div>
-            <div><strong>小栁 弘毅</strong><small>ウツノミヤ株式会社 会長</small></div>
-            <div><strong>中村 敏郎</strong><small>&nbsp;</small></div>
-            <div><strong>川島 晃</strong><small>五誠機械産業株式会社 代表取締役会長</small></div>
-            <div><strong>古賀 俊海</strong><small>中央警備保障株式会社 代表取締役</small></div>
-            <div><strong>大嶋 公子</strong><small>能 宝生流教授 舞謳会主宰 主宰</small></div>
-            <div><strong>永田 晴久</strong><small>株式会社永田 会長</small></div>
-            <div><strong>古賀 トシ子</strong><small>株式会社全日警佐賀 会長</small></div>
-            <div><strong>田中丸 雅夫</strong><small>株式会社 佐賀玉屋 相談役</small></div>
-            <div><strong>小松 敏正</strong><small>小松商店金属部 代表</small></div>
-            <div><strong>福岡 英信</strong><small>医療法人 福翔会福岡病院{理事長}</small></div>
-            <div><strong>牟田 清敬</strong><small>牟田法律事務所{所長}</small></div>
-            <div><strong>堤 浩一</strong><small>株式会社 スーパーモリナガ 代表取締役社長</small></div>
-            <div><strong>鳥屋 正人</strong><small>株式会社 ロジコム 代表取締役社長</small></div>
-            <div><strong>香月 道生</strong><small>株式会社 北島 代表取締役社長</small></div>
-          </div>
-        </div>
-        <div class="officer-group">
-          <h4>事務局長</h4>
-          <div class="name-list">
-            <div><strong>溝上 忠秀</strong><small>與賀神社 宮司</small></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="wrap" style="margin-top:22px;text-align:center;">
+    <a class="history-jump" href="#committee-history">歴代祭典委員を見る ↓</a>
   </div>
+
 </section>
 
-<!-- 歴代祭典委員（和風名簿テーブル改修） -->
-<section class="section archive-section" id="rekidai-committee">
+
+
+<section class="section committee-history-section" id="committee-history">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">HISTORY</div>
+      <div class="eyebrow">HISTORY OF THE FESTIVAL COMMITTEE</div>
       <h2>歴代祭典委員</h2>
-      <p>初代〜第54代の歴代祭典委員を検索・閲覧できます。</p>
+      <p>初代から第五十四代までの歴代祭典委員を掲載しています。名前・会社名・役職・元号などで検索できます。</p>
     </div>
-
-    <div class="archive-search">
-      <div class="archive-field">
-        <label for="archiveKeyword">検索キーワード</label>
-        <input id="archiveKeyword" type="search" placeholder="名前・会社名・役職・元号など">
-      </div>
-      <div class="archive-field">
-        <label for="archiveEra">代で絞り込み</label>
-        <select id="archiveEra">
-          <option value="">空白</option>
-          <option value="all">すべて</option>
-        </select>
-      </div>
-      <button type="button" class="archive-search-btn" id="archiveSearchBtn">名簿を検索</button>
+    <p class="committee-history-intro">大恵比須は写真も掲載しています。今後写真を追加する場合は、imageフォルダに「06.jpg」「07.jpg」のように代数に対応した写真を追加するだけで表示できます。</p>
+    <div class="history-tools" aria-label="歴代祭典委員検索">
+      <input id="historySearch" type="search" placeholder="キーワードで検索（名前・会社名・役職・元号など）" aria-label="キーワード検索">
+      <select id="historyGeneration" aria-label="代を選択">
+        <option value="">空白</option>
+        <option value="all">すべて</option>
+      </select>
     </div>
-    <p class="archive-hint">※最初は名簿を表示しません。検索条件を指定して「名簿を検索」を押してください。</p>
-
-    <div id="archiveResults" class="archive-results" aria-live="polite"></div>
+    <p class="history-status" id="historyStatus">条件を選択・入力すると名簿が表示されます。</p>
+    <div class="history-table-wrap" id="historyList" aria-live="polite"></div>
   </div>
 </section>
 
@@ -1082,12 +1368,11 @@ footer small{display:block;margin-top:8px;opacity:.85}
     </div>
     <div class="news-card">
       <ul class="news-list">
-        <li><time>2026.09.28</time><a href="#rekidai-committee">歴代祭典委員を追加しました</a></li>
+<li><time>2026.09.25</time><a href="event-fukuotoko.html">福男走の概要・詳細追加しました</a></li>
         <li><time>2026.09</time><a href="#saga-ebisu">佐賀恵比須会を公開しました</a></li>
         <li><time>2026.09</time><a href="#committee">祭典委員を公開しました</a></li>
         <li><time>2026.09</time><a href="#top">令和9年 佐賀十日恵比須大祭 特設サイトを公開しました。</a></li>
         <li><time>2026.09</time>大祭のイベント情報を順次掲載しています。</li>
-        <li><time>近日</time>タイムテーブル・出演者・協賛企業等を掲載予定です。</li>
       </ul>
     </div>
   </div>
@@ -1140,113 +1425,52 @@ footer small{display:block;margin-top:8px;opacity:.85}
 })();
 </script>
 
+
 <script>
 (function(){
-  const q = document.getElementById("archiveKeyword");
-  const era = document.getElementById("archiveEra");
-  const btn = document.getElementById("archiveSearchBtn");
-  const out = document.getElementById("archiveResults");
-
-  if(!q || !era || !btn || !out) return;
-
-  let rows = [];
-
-  const norm = x => String(x ?? "").replace(/\s+/g, "").toLowerCase();
-
-  const parseNum = x => {
-    x = String(x ?? "");
-    let m = x.match(/\d+/);
-    if(m) return +m[0];
-    const a = ["零","一","二","三","四","五","六","七","八","九","十"];
-    for(let n = 1; n <= 54; n++){
-      let s = n < 10 ? a[n] : n < 20 ? "十" + (n%10 ? a[n%10] : "") : n < 30 ? "二十" + (n%10 ? a[n%10] : "") : n < 40 ? "三十" + (n%10 ? a[n%10] : "") : n < 50 ? "四十" + (n%10 ? a[n%10] : "") : "五十" + (n%10 ? a[n%10] : "");
-      if(x.includes(s)) return n;
-    }
-    return NaN;
-  };
-
-  const genStr = n => n === 1 ? "初代" : `第${n}代`;
-
-  const getRole = r => r["恵比須"] || "";
-  const getName = r => r["名前"] || "";
-  const getCompany = r => r["会社名"] || "";
-  const getTitle = r => r["役職"] || "";
-  const getYear = r => r["元号"] || "";
-  const getGen = r => parseNum(r["代"] || "");
-
-  function render(a){
-    if(!a.length){
-      out.innerHTML = '<div class="archive-empty">該当する祭典委員が見つかりませんでした。</div>';
-      return;
-    }
-
-    let html = `<div class="archive-count-summary">検索結果：${a.length} 件</div>`;
-    html += `<div class="archive-table-wrap"><table class="archive-table"><thead><tr><th>代（元号）</th><th>氏名</th><th>会社名・団体名</th><th>役職</th><th>区分</th></tr></thead><tbody>`;
-
-    a.forEach(r => {
-      let n = getGen(r);
-      let role = getRole(r);
-      let name = getName(r);
-      let company = getCompany(r);
-      let title = getTitle(r);
-      let year = getYear(r);
-      let isDaiebisu = norm(role) === norm("大恵比須");
-
-      let photoHtml = "";
-      if(isDaiebisu && Number.isFinite(n)){
-        let imgNum = String(n).padStart(2, '0');
-        photoHtml = `<img class="archive-daiebisu-thumb" src="image/${imgNum}.jpg" alt="${name}" onerror="this.style.display='none'">`;
+  const search=document.getElementById('historySearch'), generation=document.getElementById('historyGeneration'), list=document.getElementById('historyList'), status=document.getElementById('historyStatus');
+  if(!search||!generation||!list||!status)return;
+  let records=[];
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const genNum=v=>{const s=String(v??''),m=s.match(/\d+/);if(m)return +m[0];if(s.includes('初代'))return 1;return null};
+  const genLabel=n=>n===1?'初代':'第'+n+'代';
+  const displayGen=item=>item['恵比須']==='大恵比須' ? (item['代(漢字)']||item['代']) : item['代'];
+  const imageNo=item=>{const n=genNum(item['代']);return n>=1&&n<=54?String(n).padStart(2,'0'):''};
+  function render(){
+    const q=search.value.trim().toLowerCase(), sel=generation.value;
+    if(!q&&!sel){list.innerHTML='';status.textContent='条件を選択・入力すると名簿が表示されます。';return}
+    const filtered=records.filter(item=>{
+      const n=genNum(item['代']);
+      if(sel&&sel!=='all'&&String(n)!==sel)return false;
+      if(q){
+        const text=[item['代'],item['代(漢字)'],item['元号'],item['西暦'],item['元号(漢字)'],item['恵比須'],item['名前'],item['会社名・団体名'],item['役職']].join(' ').toLowerCase();
+        if(!text.includes(q))return false;
       }
-
-      let genLabel = Number.isFinite(n) ? genStr(n) : (r["代"] || "");
-      let yearLabel = isDaiebisu && year ? `（${year}）` : "";
-
-      html += `<tr class="${isDaiebisu ? 'is-daiebisu' : ''}">
-        <td class="col-gen">${genLabel}${yearLabel}</td>
-        <td class="col-name">${photoHtml}${name}</td>
-        <td class="col-company">${company}</td>
-        <td class="col-title">${title}</td>
-        <td class="col-role"><span class="role-badge ${isDaiebisu ? 'daiebisu' : ''}">${role}</span></td>
+      return true;
+    }).sort((a,b)=>Number(a['Ｎｏ']||0)-Number(b['Ｎｏ']||0));
+    if(!filtered.length){list.innerHTML='<div class="history-empty">該当する祭典委員が見つかりませんでした。</div>';status.textContent='該当件数 0件';return}
+    const body=filtered.map(item=>{
+      const d=item['恵比須']==='大恵比須', no=imageNo(item);
+      const photo=d&&no?`<img class="history-daiebisu-photo" src="image/${no}.jpg" alt="${esc(item['名前'])}" loading="lazy" onerror="this.classList.add('is-missing')">`:'';
+      return `<tr class="${d?'is-daiebisu':''}">
+        <td class="generation">${esc(displayGen(item))}</td>
+        <td class="year">${esc(item['西暦'])}</td>
+        <td class="role">${esc(item['恵比須'])}</td>
+        <td class="name"><div class="history-name-cell">${photo}<span>${esc(item['名前'])}</span></div></td>
+        <td class="company">${esc(item['会社名・団体名'])}</td>
+        <td class="title">${esc(item['役職'])}</td>
       </tr>`;
-    });
-
-    html += `</tbody></table></div>`;
-    out.innerHTML = html;
+    }).join('');
+    list.innerHTML=`<table class="history-table"><thead><tr><th>代</th><th>西暦</th><th>恵比須</th><th>名前</th><th>会社名・団体名</th><th>役職</th></tr></thead><tbody>${body}</tbody></table>`;
+    status.textContent=`該当件数 ${filtered.length}件`;
   }
-
-  function search(){
-    let s = norm(q.value);
-    let e = era.value;
-
-    if(!s && !e){
-      out.innerHTML = "";
-      return;
-    }
-
-    let filtered = rows.filter(x => {
-      let text = norm([x["代"], x["元号"], getName(x), getCompany(x), getTitle(x), getRole(x)].join(" "));
-      let matchKeyword = !s || text.includes(s);
-      let matchEra = !e || e === "all" || String(getGen(x)) === e;
-      return matchKeyword && matchEra;
-    });
-
-    render(filtered);
-  }
-
-  btn.onclick = search;
-  q.onkeydown = e => { if(e.key === "Enter") search(); };
-
-  fetch("rekidai_ebisu_all.json")
-    .then(r => r.json())
-    .then(d => {
-      rows = Array.isArray(d) ? d : [];
-      let ns = [...new Set(rows.map(getGen).filter(Number.isFinite))].sort((a,b) => a - b);
-      era.innerHTML = '<option value="">空白</option><option value="all">すべて</option>' + 
-        ns.map(n => `<option value="${n}">${genStr(n)}</option>`).join("");
-    })
-    .catch(() => {
-      out.innerHTML = '<div class="archive-empty">名簿データ（rekidai_ebisu_all.json）を読み込めませんでした。</div>';
-    });
+  fetch('rekidai_ebisu_all.json').then(r=>{if(!r.ok)throw new Error();return r.json()}).then(data=>{
+    records=Array.isArray(data)?data:[];
+    const ns=[...new Set(records.map(x=>genNum(x['代'])).filter(n=>Number.isFinite(n)&&n>=1&&n<=54))].sort((a,b)=>a-b);
+    generation.innerHTML='<option value="">空白</option><option value="all">すべて</option>'+ns.map(n=>`<option value="${n}">${genLabel(n)}</option>`).join('');
+    render();
+  }).catch(()=>{status.textContent='名簿データを読み込めませんでした。'});
+  search.addEventListener('input',render);generation.addEventListener('change',render);
 })();
 </script>
 
